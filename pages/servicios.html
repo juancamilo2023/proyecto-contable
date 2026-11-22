@@ -1,0 +1,837 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NOVERIS | Servicios contables</title>
+
+    <link rel="stylesheet" href="../css/servicios.css">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <!-- CONTROL DEL MENÚ LATERAL -->
+        <input
+            type="checkbox"
+            id="sidebar-toggle"
+            class="sidebar-toggle-checkbox"
+            aria-label="Contraer o expandir el menú lateral"
+        >
+
+        <label
+            for="sidebar-toggle"
+            class="sidebar-toggle"
+            title="Contraer o expandir menú"
+        >
+            <svg
+                class="toggle-icon toggle-close"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m16 15-3-3 3-3"/>
+            </svg>
+
+            <svg
+                class="toggle-icon toggle-open"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M9 3v18"/>
+                <path d="m13 9 3 3-3 3"/>
+            </svg>
+        </label>
+
+
+        <!-- ==================================================
+             MENÚ LATERAL
+        =================================================== -->
+
+        <aside class="sidebar">
+
+            <div class="brand">
+
+                <div class="brand-symbol">N</div>
+
+                <div class="brand-information">
+                    <h1>NOVERIS</h1>
+                    <span>GESTIÓN CONTABLE Y FINANCIERA</span>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-section">
+
+                <span class="section-label">MENÚ PRINCIPAL</span>
+
+                <nav class="navigation">
+
+                    <a href="dashboard.html" class="nav-item">
+                        <span class="nav-icon">▦</span>
+                        <span>Panel principal</span>
+                    </a>
+
+                    <a href="clientes.html" class="nav-item">
+                        <span class="nav-icon">♙</span>
+                        <span>Clientes</span>
+                    </a>
+
+                    <a href="servicios.html" class="nav-item active">
+                        <span class="nav-icon">▤</span>
+                        <span>Servicios contables</span>
+                    </a>
+
+                    <a href="calendario.html" class="nav-item">
+                        <span class="nav-icon">▦</span>
+                        <span>Calendario tributario</span>
+                    </a>
+
+                    <a href="documentos.html" class="nav-item">
+                        <span class="nav-icon">▧</span>
+                        <span>Documentos</span>
+                    </a>
+
+                    <a href="cartera.html" class="nav-item">
+                        <span class="nav-icon">$</span>
+                        <span>Cartera y pagos</span>
+                    </a>
+
+                    <a href="informes.html" class="nav-item">
+                        <span class="nav-icon">▥</span>
+                        <span>Informes</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-section secondary-navigation">
+
+                <span class="section-label">ADMINISTRACIÓN</span>
+
+                <nav class="navigation">
+
+                    <a href="usuarios.html" class="nav-item">
+                        <span class="nav-icon">♧</span>
+                        <span>Usuarios</span>
+                    </a>
+
+                    <a href="configuracion.html" class="nav-item">
+                        <span class="nav-icon">⚙</span>
+                        <span>Configuración</span>
+                    </a>
+
+                </nav>
+
+            </div>
+
+
+            <div class="sidebar-footer">
+
+                <div class="profile-avatar">LK</div>
+
+                <div class="profile-information">
+                    <strong>Lyzeth Katerine</strong>
+                    <span>Administradora</span>
+                </div>
+
+                <a
+                    href="../index.html"
+                    class="logout-link"
+                    title="Cerrar sesión"
+                >
+                    ↗
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ==================================================
+             CONTENIDO PRINCIPAL
+        =================================================== -->
+
+        <main class="main-content">
+
+
+            <!-- BARRA SUPERIOR -->
+
+            <header class="topbar">
+
+                <div class="breadcrumb">
+                    <a href="dashboard.html">Inicio</a>
+                    <span>/</span>
+                    <strong>Servicios contables</strong>
+                </div>
+
+                <div class="topbar-actions">
+
+                    <div class="current-context">
+                        <span class="context-indicator"></span>
+                        Gestión administrativa
+                    </div>
+
+                    <div class="topbar-divider"></div>
+
+                    <div class="topbar-user">
+
+                        <div class="profile-avatar small">LK</div>
+
+                        <div class="topbar-user-info">
+                            <strong>Lyzeth Katerine</strong>
+                            <span>Administradora</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- ÁREA DE TRABAJO -->
+
+            <section class="content-wrapper">
+
+
+                <!-- ENCABEZADO -->
+
+                <div class="page-heading">
+
+                    <div>
+
+                        <span class="eyebrow">
+                            GESTIÓN DE SERVICIOS
+                        </span>
+
+                        <h2>Servicios contables</h2>
+
+                        <p>
+                            Administra el catálogo de servicios profesionales,
+                            sus tarifas y disponibilidad.
+                        </p>
+
+                    </div>
+
+                    <button class="primary-button" type="button">
+                        <span>+</span>
+                        Nuevo servicio
+                    </button>
+
+                </div>
+
+
+                <!-- INDICADORES -->
+
+                <section class="summary-grid">
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon navy-icon">
+                            ▤
+                        </div>
+
+                        <div class="summary-information">
+                            <span>Servicios registrados</span>
+                            <strong>12</strong>
+                            <small>Catálogo general</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon green-icon">
+                            ✓
+                        </div>
+
+                        <div class="summary-information">
+                            <span>Servicios activos</span>
+                            <strong>10</strong>
+                            <small>Disponibles actualmente</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon gold-icon">
+                            ♙
+                        </div>
+
+                        <div class="summary-information">
+                            <span>Clientes vinculados</span>
+                            <strong>286</strong>
+                            <small>En servicios registrados</small>
+                        </div>
+
+                    </article>
+
+
+                    <article class="summary-card">
+
+                        <div class="summary-icon slate-icon">
+                            $
+                        </div>
+
+                        <div class="summary-information">
+                            <span>Tarifa promedio</span>
+                            <strong>$385 mil</strong>
+                            <small>Valor referencial</small>
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- CATÁLOGO DE SERVICIOS -->
+
+                <section class="services-panel">
+
+
+                    <!-- ENCABEZADO DEL PANEL -->
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span class="panel-overline">
+                                CATÁLOGO PROFESIONAL
+                            </span>
+
+                            <h3>Listado de servicios</h3>
+
+                            <p>
+                                Consulta y administra los servicios
+                                ofrecidos a los clientes.
+                            </p>
+
+                        </div>
+
+                        <span class="records-count">
+                            12 servicios registrados
+                        </span>
+
+                    </div>
+
+
+                    <!-- BÚSQUEDA Y FILTROS -->
+
+                    <div class="filter-toolbar">
+
+                        <div class="search-box">
+
+                            <span class="search-icon">⌕</span>
+
+                            <input
+                                type="search"
+                                placeholder="Buscar servicio por nombre..."
+                                aria-label="Buscar servicio"
+                            >
+
+                        </div>
+
+                        <select aria-label="Filtrar por categoría">
+                            <option value="">Todas las categorías</option>
+                            <option>Tributarios</option>
+                            <option>Contables</option>
+                            <option>Facturación</option>
+                            <option>Asesoría</option>
+                        </select>
+
+                        <select aria-label="Filtrar por estado">
+                            <option value="">Todos los estados</option>
+                            <option>Activo</option>
+                            <option>Inactivo</option>
+                        </select>
+
+                        <button class="filter-button" type="button">
+                            Filtrar
+                        </button>
+
+                    </div>
+
+
+                    <!-- TABLA -->
+
+                    <div class="table-container">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>SERVICIO</th>
+                                    <th>CATEGORÍA</th>
+                                    <th>PERIODICIDAD</th>
+                                    <th>CLIENTES</th>
+                                    <th>TARIFA BASE</th>
+                                    <th>ESTADO</th>
+                                    <th>ACCIONES</th>
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-one">
+                                                IVA
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Declaración de IVA</strong>
+                                                <span>Liquidación y presentación</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Bimestral / Cuatrimestral</td>
+
+                                    <td>
+                                        <span class="client-count">68</span>
+                                    </td>
+
+                                    <td class="price-value">$250.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-two">
+                                                R
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Declaración de renta</strong>
+                                                <span>Personas naturales y jurídicas</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Anual</td>
+
+                                    <td>
+                                        <span class="client-count">94</span>
+                                    </td>
+
+                                    <td class="price-value">$450.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-three">
+                                                RF
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Retención en la fuente</strong>
+                                                <span>Liquidación y declaración</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Mensual</td>
+
+                                    <td>
+                                        <span class="client-count">42</span>
+                                    </td>
+
+                                    <td class="price-value">$180.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-four">
+                                                EX
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Información exógena</strong>
+                                                <span>Preparación y presentación</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Anual</td>
+
+                                    <td>
+                                        <span class="client-count">36</span>
+                                    </td>
+
+                                    <td class="price-value">$600.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-five">
+                                                ICA
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Impuesto de industria y comercio</strong>
+                                                <span>Declaración y liquidación ICA</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Según municipio</td>
+
+                                    <td>
+                                        <span class="client-count">28</span>
+                                    </td>
+
+                                    <td class="price-value">$220.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-six">
+                                                BF
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Beneficiarios finales</strong>
+                                                <span>Registro y actualización RUB</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label tax-category">
+                                            Tributario
+                                        </span>
+                                    </td>
+
+                                    <td>Según obligación</td>
+
+                                    <td>
+                                        <span class="client-count">18</span>
+                                    </td>
+
+                                    <td class="price-value">$300.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-seven">
+                                                FE
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Facturación electrónica</strong>
+                                                <span>Configuración y acompañamiento</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label billing-category">
+                                            Facturación
+                                        </span>
+                                    </td>
+
+                                    <td>Continuo</td>
+
+                                    <td>
+                                        <span class="client-count">52</span>
+                                    </td>
+
+                                    <td class="price-value">$150.000</td>
+
+                                    <td>
+                                        <span class="status active-status">
+                                            Activo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        <div class="service-cell">
+
+                                            <div class="service-avatar avatar-eight">
+                                                AS
+                                            </div>
+
+                                            <div class="service-information">
+                                                <strong>Asesoría contable</strong>
+                                                <span>Orientación y acompañamiento</span>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <span class="category-label advisory-category">
+                                            Asesoría
+                                        </span>
+                                    </td>
+
+                                    <td>Según necesidad</td>
+
+                                    <td>
+                                        <span class="client-count">31</span>
+                                    </td>
+
+                                    <td class="price-value">$200.000</td>
+
+                                    <td>
+                                        <span class="status inactive-status">
+                                            Inactivo
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <div class="action-group">
+                                            <button class="action-button" type="button" title="Ver detalle">⌕</button>
+                                            <button class="action-button" type="button" title="Editar">✎</button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- PAGINACIÓN -->
+
+                    <div class="pagination">
+
+                        <span>
+                            Mostrando 1 a 8 de 12 servicios
+                        </span>
+
+                        <div class="pagination-controls">
+
+                            <button type="button" disabled>
+                                Anterior
+                            </button>
+
+                            <button type="button" class="active-page">
+                                1
+                            </button>
+
+                            <button type="button">
+                                2
+                            </button>
+
+                            <button type="button">
+                                Siguiente
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- PIE DE PÁGINA -->
+
+                <footer class="content-footer">
+
+                    <span>
+                        NOVERIS · Gestión contable y financiera
+                    </span>
+
+                    <span>
+                        Módulo de servicios
+                    </span>
+
+                </footer>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
