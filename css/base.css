@@ -1,0 +1,1095 @@
+
+/* ==========================================================
+   NOVERIS
+   SISTEMA DE GESTIÓN CONTABLE Y FINANCIERA
+   Hoja de estilos global
+   ========================================================== */
+
+
+/* ==========================================================
+   1. VARIABLES DE IDENTIDAD VISUAL
+   ========================================================== */
+
+:root {
+    /* Colores institucionales */
+    --navy: #17324D;
+    --green: #2E6B57;
+    --gold: #B8892F;
+
+    /* Textos */
+    --text-primary: #263746;
+    --text-secondary: #5F7078;
+    --text-muted: #78868D;
+
+    /* Superficies */
+    --background: #F5F7F8;
+    --white: #FFFFFF;
+    --border: #DCE3E5;
+
+    /* Estados */
+    --status-success: #246348;
+    --status-info: #285F7C;
+    --status-warning: #76550C;
+    --status-danger: #913C3C;
+
+    --status-success-bg: #EAF2ED;
+    --status-info-bg: #EAF1F5;
+    --status-warning-bg: #F7F1E3;
+    --status-danger-bg: #F6EAEA;
+
+    /* Estructura */
+    --sidebar-width: 270px;
+    --sidebar-collapsed-width: 76px;
+    --topbar-height: 76px;
+
+    /* Bordes y sombras */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+
+    --shadow-sm: 0 2px 8px rgba(23, 50, 77, 0.06);
+    --shadow-md: 0 4px 16px rgba(23, 50, 77, 0.08);
+
+    /* Transiciones */
+    --transition: 0.3s ease;
+}
+
+
+/* ==========================================================
+   2. CONFIGURACIÓN GENERAL Y RESET
+   ========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+
+    color: var(--text-primary);
+    background: var(--background);
+
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(46, 107, 87, 0.45);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   3. ESTRUCTURA PRINCIPAL
+   ========================================================== */
+
+.dashboard-layout {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.main-content {
+    min-height: 100vh;
+    margin-left: var(--sidebar-width);
+
+    transition: margin-left var(--transition);
+}
+
+.content-wrapper {
+    width: 100%;
+    max-width: 1800px;
+
+    margin: 0 auto;
+    padding: 32px 36px 24px;
+}
+
+
+/* ==========================================================
+   4. CONTROL DEL MENÚ LATERAL
+   ========================================================== */
+
+.sidebar-toggle-checkbox {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   5. BOTÓN CONTRAER / EXPANDIR
+   ========================================================== */
+
+.sidebar-toggle {
+    position: fixed;
+
+    top: 50%;
+    left: calc(var(--sidebar-width) - 18px);
+
+    transform: translateY(-50%);
+
+    z-index: 1100;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--white);
+    color: var(--navy);
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    box-shadow: var(--shadow-sm);
+
+    cursor: pointer;
+
+    transition:
+        left var(--transition),
+        box-shadow 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background: var(--white);
+    border-color: var(--border);
+    color: var(--navy);
+    box-shadow: var(--shadow-sm);
+}
+
+.sidebar-toggle i {
+    font-size: 16px;
+    line-height: 1;
+}
+
+.toggle-open {
+    display: none;
+}
+
+.sidebar-toggle-checkbox:checked + .sidebar-toggle {
+    left: calc(var(--sidebar-collapsed-width) - 18px);
+}
+
+.sidebar-toggle-checkbox:checked + .sidebar-toggle .toggle-close {
+    display: none;
+}
+
+.sidebar-toggle-checkbox:checked + .sidebar-toggle .toggle-open {
+    display: inline-block;
+}
+
+
+/* ==========================================================
+   6. MENÚ LATERAL
+   ========================================================== */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1000;
+
+    width: var(--sidebar-width);
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--navy);
+    color: var(--white);
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    transition: width var(--transition);
+}
+
+
+/* ==========================================================
+   7. IDENTIDAD DE MARCA
+   ========================================================== */
+
+.brand {
+    min-height: 100px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 20px 22px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand-symbol {
+    flex-shrink: 0;
+
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--green);
+    color: var(--white);
+
+    border-radius: 10px;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.brand-information {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-information h1 {
+    color: var(--white);
+
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    line-height: 1.2;
+}
+
+.brand-information span {
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+}
+
+
+/* ==========================================================
+   8. SECCIONES DE NAVEGACIÓN
+   ========================================================== */
+
+.sidebar-section {
+    padding: 24px 14px 8px;
+}
+
+.section-label {
+    display: block;
+
+    padding: 0 10px;
+    margin-bottom: 12px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-item {
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 10px 12px;
+
+    color: rgba(255, 255, 255, 0.78);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 16px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: var(--white);
+}
+
+.nav-item.active {
+    background: rgba(46, 107, 87, 0.35);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.nav-icon {
+    flex-shrink: 0;
+
+    width: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 17px;
+}
+
+.nav-item.active .nav-icon {
+    color: #A8D3BD;
+}
+
+.secondary-navigation {
+    padding-top: 22px;
+}
+
+
+/* ==========================================================
+   9. PERFIL Y CIERRE DE SESIÓN
+   ========================================================== */
+
+.sidebar-footer {
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-top: auto;
+    padding: 16px 18px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.profile-avatar {
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+
+    border-radius: 50%;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.profile-information {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.profile-information strong {
+    color: var(--white);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-information span {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+}
+
+.logout-link {
+    flex-shrink: 0;
+
+    width: 32px;
+    height: 32px;
+
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 16px;
+
+    transition: background 0.2s ease;
+}
+
+.logout-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--white);
+}
+
+
+/* ==========================================================
+   10. ESTADO CONTRAÍDO DEL MENÚ
+   ========================================================== */
+
+.sidebar-toggle-checkbox:checked ~ .sidebar {
+    width: var(--sidebar-collapsed-width);
+}
+
+.sidebar-toggle-checkbox:checked ~ .main-content {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .brand {
+    justify-content: center;
+    padding: 20px 10px;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .brand-information,
+.sidebar-toggle-checkbox:checked ~ .sidebar .section-label,
+.sidebar-toggle-checkbox:checked ~ .sidebar .nav-item > span:not(.nav-icon),
+.sidebar-toggle-checkbox:checked ~ .sidebar .profile-information,
+.sidebar-toggle-checkbox:checked ~ .sidebar .logout-link {
+    display: none;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-section {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .nav-item {
+    justify-content: center;
+    padding: 10px 5px;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .nav-icon {
+    width: 100%;
+    font-size: 19px;
+}
+
+.sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-footer {
+    justify-content: center;
+    padding: 16px 8px;
+}
+
+
+/* ==========================================================
+   11. BARRA SUPERIOR
+   ========================================================== */
+
+.topbar {
+    position: sticky;
+    top: 0;
+
+    z-index: 900;
+
+    min-height: var(--topbar-height);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    padding: 14px 36px;
+
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.breadcrumb strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.current-context {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.context-indicator {
+    width: 8px;
+    height: 8px;
+
+    background: var(--green);
+    border-radius: 50%;
+}
+
+.topbar-divider {
+    width: 1px;
+    height: 32px;
+
+    background: var(--border);
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-avatar.small {
+    width: 36px;
+    height: 36px;
+
+    background: var(--navy);
+
+    font-size: 13px;
+}
+
+.topbar-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.topbar-user-info strong {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.topbar-user-info span {
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   12. BOTONES GENERALES
+   ========================================================== */
+
+.btn {
+    min-height: 42px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    padding: 10px 17px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--green);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: #245744;
+}
+
+.btn-secondary {
+    background: var(--white);
+    color: var(--navy);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    background: #F0F3F4;
+}
+
+.btn-danger {
+    background: var(--status-danger);
+    color: var(--white);
+}
+
+.btn-danger:hover {
+    background: #793131;
+}
+
+.btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================
+   13. FORMULARIOS GENERALES
+   ========================================================== */
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.form-control {
+    width: 100%;
+    min-height: 44px;
+
+    padding: 10px 12px;
+
+    background: var(--white);
+    color: var(--text-primary);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+
+    font-size: 15px;
+
+    transition: border-color 0.2s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus {
+    border-color: var(--green);
+    outline: 3px solid rgba(46, 107, 87, 0.12);
+}
+
+textarea.form-control {
+    min-height: 110px;
+    resize: vertical;
+}
+
+
+/* ==========================================================
+   14. TABLAS GENERALES
+   ========================================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+
+    text-align: left;
+}
+
+thead {
+    background: #F1F4F5;
+}
+
+th {
+    padding: 14px 16px;
+
+    color: var(--text-secondary);
+
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    border-bottom: 1px solid var(--border);
+}
+
+td {
+    padding: 15px 16px;
+
+    color: var(--text-primary);
+
+    font-size: 14px;
+    vertical-align: middle;
+
+    border-bottom: 1px solid var(--border);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background: #F8FAFA;
+}
+
+
+/* ==========================================================
+   15. ESTADOS Y ETIQUETAS
+   ========================================================== */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    min-height: 28px;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.status-success {
+    background: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.status-info {
+    background: var(--status-info-bg);
+    color: var(--status-info);
+}
+
+.status-warning {
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
+}
+
+.status-danger {
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+}
+
+.status-neutral {
+    background: #EEF1F2;
+    color: #52616A;
+}
+
+
+/* ==========================================================
+   16. TARJETAS Y SUPERFICIES GENERALES
+   ========================================================== */
+
+.card {
+    background: var(--white);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.card-header h3 {
+    color: var(--text-primary);
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+
+/* ==========================================================
+   17. PIE DE CONTENIDO
+   ========================================================== */
+
+.content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    padding: 20px 0 5px;
+
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   18. RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 1200px) {
+    .content-wrapper {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+
+    .topbar {
+        padding-left: 26px;
+        padding-right: 26px;
+    }
+}
+
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: var(--sidebar-collapsed-width);
+    }
+
+    .main-content {
+        margin-left: var(--sidebar-collapsed-width);
+    }
+
+    .sidebar .brand {
+        justify-content: center;
+        padding: 20px 10px;
+    }
+
+    .sidebar .brand-information,
+    .sidebar .section-label,
+    .sidebar .nav-item > span:not(.nav-icon),
+    .sidebar .profile-information,
+    .sidebar .logout-link {
+        display: none;
+    }
+
+    .sidebar .sidebar-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .sidebar .nav-item {
+        justify-content: center;
+        padding: 10px 5px;
+    }
+
+    .sidebar .nav-icon {
+        width: 100%;
+        font-size: 19px;
+    }
+
+    .sidebar .sidebar-footer {
+        justify-content: center;
+        padding: 16px 8px;
+    }
+
+    .sidebar-toggle {
+        left: calc(var(--sidebar-collapsed-width) - 18px);
+    }
+
+    .sidebar-toggle-checkbox:checked + .sidebar-toggle {
+        left: calc(var(--sidebar-width) - 18px);
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar {
+        width: var(--sidebar-width);
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .main-content {
+        margin-left: var(--sidebar-width);
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .brand {
+        justify-content: flex-start;
+        padding: 20px 22px;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .brand-information,
+    .sidebar-toggle-checkbox:checked ~ .sidebar .section-label,
+    .sidebar-toggle-checkbox:checked ~ .sidebar .nav-item > span:not(.nav-icon),
+    .sidebar-toggle-checkbox:checked ~ .sidebar .profile-information,
+    .sidebar-toggle-checkbox:checked ~ .sidebar .logout-link {
+        display: flex;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .section-label {
+        display: block;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-section {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .nav-item {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .nav-icon {
+        width: 24px;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-footer {
+        justify-content: flex-start;
+        padding: 16px 18px;
+    }
+}
+
+
+@media (max-width: 600px) {
+    .topbar {
+        min-height: 64px;
+        padding: 12px 18px;
+    }
+
+    .topbar-actions {
+        gap: 10px;
+    }
+
+    .current-context,
+    .topbar-divider,
+    .topbar-user-info {
+        display: none;
+    }
+
+    .content-wrapper {
+        padding: 24px 18px;
+    }
+
+    .breadcrumb {
+        font-size: 13px;
+    }
+
+    .sidebar-toggle {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .content-wrapper {
+        padding: 20px 14px;
+    }
+
+    .topbar {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .sidebar {
+        width: 64px;
+    }
+
+    .main-content {
+        margin-left: 64px;
+    }
+
+    .sidebar-toggle {
+        left: 46px;
+    }
+
+    .sidebar-toggle-checkbox:checked + .sidebar-toggle {
+        left: 252px;
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .sidebar {
+        width: var(--sidebar-width);
+    }
+
+    .sidebar-toggle-checkbox:checked ~ .main-content {
+        margin-left: var(--sidebar-width);
+    }
+}
+
+
+/* ==========================================================
+   19. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
