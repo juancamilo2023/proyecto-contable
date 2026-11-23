@@ -3,12 +3,12 @@
    NOVERIS
    MÓDULO DE CLIENTES
    Hoja de estilos independiente
-   ========================================================== */
+========================================================== */
 
 
 /* ==========================================================
    1. ENCABEZADO DEL MÓDULO
-   ========================================================== */
+========================================================== */
 
 .clients-page {
     display: flex;
@@ -25,6 +25,7 @@
 }
 
 .clients-heading-information {
+    flex: 1;
     min-width: 0;
 }
 
@@ -59,8 +60,117 @@
 
 
 /* ==========================================================
-   2. INDICADORES
-   ========================================================== */
+   2. BOTÓN PRINCIPAL: REGISTRAR CLIENTE
+   Mismas dimensiones y apariencia que Servicios
+========================================================== */
+
+.clients-heading .btn,
+.clients-heading .primary-button {
+    flex: 0 0 190px;
+    width: 190px;
+    min-width: 190px;
+    min-height: 52px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    margin-left: auto;
+    padding: 0 20px;
+
+    border: 1px solid #245642;
+    border-radius: 9px;
+
+    background: linear-gradient(
+        135deg,
+        #34775F 0%,
+        #245642 100%
+    );
+
+    color: #FFFFFF;
+
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+
+    box-shadow:
+        0 3px 6px rgba(23, 50, 77, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+/* Icono Font Awesome sin recuadro */
+
+.clients-heading .btn i,
+.clients-heading .primary-button i {
+    width: auto;
+    height: auto;
+
+    display: inline-block;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 1;
+
+    transition: transform 0.2s ease;
+}
+
+/* Efecto hover */
+
+.clients-heading .btn:hover,
+.clients-heading .primary-button:hover {
+    background: linear-gradient(
+        135deg,
+        #3C846A 0%,
+        #2E6B57 100%
+    );
+
+    box-shadow:
+        0 5px 12px rgba(23, 50, 77, 0.18),
+        0 2px 4px rgba(0, 0, 0, 0.08);
+
+    transform: translateY(-2px);
+}
+
+.clients-heading .btn:hover i,
+.clients-heading .primary-button:hover i {
+    background: transparent;
+    transform: scale(1.12);
+}
+
+/* Estado de pulsación */
+
+.clients-heading .btn:active,
+.clients-heading .primary-button:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 2px 4px rgba(23, 50, 77, 0.12);
+}
+
+/* Accesibilidad mediante teclado */
+
+.clients-heading .btn:focus-visible,
+.clients-heading .primary-button:focus-visible {
+    outline: 3px solid rgba(46, 107, 87, 0.30);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   3. INDICADORES
+========================================================== */
 
 .clients-summary-grid {
     display: grid;
@@ -149,8 +259,8 @@
 
 
 /* ==========================================================
-   3. PANEL DEL DIRECTORIO
-   ========================================================== */
+   4. PANEL DEL DIRECTORIO
+========================================================== */
 
 .clients-panel {
     min-width: 0;
@@ -219,8 +329,8 @@
 
 
 /* ==========================================================
-   4. BÚSQUEDA Y FILTROS
-   ========================================================== */
+   5. BÚSQUEDA Y FILTROS
+========================================================== */
 
 .clients-filter-toolbar {
     display: flex;
@@ -320,8 +430,8 @@
 
 
 /* ==========================================================
-   5. TABLA DE CLIENTES
-   ========================================================== */
+   6. TABLA DE CLIENTES
+========================================================== */
 
 .clients-table-wrapper {
     width: 100%;
@@ -389,8 +499,8 @@
 
 
 /* ==========================================================
-   6. IDENTIFICACIÓN DEL CLIENTE
-   ========================================================== */
+   7. IDENTIFICACIÓN DEL CLIENTE
+========================================================== */
 
 .clients-client-cell {
     display: flex;
@@ -462,8 +572,8 @@
 
 
 /* ==========================================================
-   7. TIPO DE CLIENTE Y CONTACTO
-   ========================================================== */
+   8. TIPO DE CLIENTE Y CONTACTO
+========================================================== */
 
 .clients-type-label {
     display: inline-flex;
@@ -510,8 +620,8 @@
 
 
 /* ==========================================================
-   8. ACCIONES DE LA TABLA
-   ========================================================== */
+   9. ACCIONES DE LA TABLA
+========================================================== */
 
 .clients-action-group {
     display: flex;
@@ -550,8 +660,8 @@
 
 
 /* ==========================================================
-   9. PAGINACIÓN
-   ========================================================== */
+   10. PAGINACIÓN
+========================================================== */
 
 .clients-pagination {
     display: flex;
@@ -620,8 +730,8 @@
 
 
 /* ==========================================================
-   10. ADAPTACIÓN A PANTALLAS MEDIANAS
-   ========================================================== */
+   11. ADAPTACIÓN A PANTALLAS MEDIANAS
+========================================================== */
 
 @media (max-width: 1200px) {
 
@@ -633,8 +743,8 @@
 
 
 /* ==========================================================
-   11. TABLET
-   ========================================================== */
+   12. TABLET
+========================================================== */
 
 @media (max-width: 900px) {
 
@@ -654,13 +764,13 @@
 
 
 /* ==========================================================
-   12. DISPOSITIVOS MÓVILES
-   ========================================================== */
+   13. DISPOSITIVOS MÓVILES
+========================================================== */
 
 @media (max-width: 600px) {
 
     .clients-heading {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: column;
     }
 
@@ -672,8 +782,12 @@
         font-size: 15px;
     }
 
-    .clients-heading .btn {
+    .clients-heading .btn,
+    .clients-heading .primary-button {
+        flex: 1 1 auto;
         width: 100%;
+        min-width: 0;
+        margin-left: 0;
     }
 
     .clients-summary-grid {
@@ -723,8 +837,8 @@
 
 
 /* ==========================================================
-   13. MOVIMIENTO REDUCIDO
-   ========================================================== */
+   14. MOVIMIENTO REDUCIDO
+========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
