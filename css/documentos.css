@@ -1,29 +1,28 @@
 
-/* =========================================================
-   NOVERIS — DOCUMENTOS
+/* ==========================================================
+   NOVERIS
+   MÓDULO: DOCUMENTOS
    Hoja de estilos independiente
-   ========================================================= */
+========================================================== */
 
 
-/* =========================================================
-   1. VARIABLES Y CONFIGURACIÓN GENERAL
-   ========================================================= */
+/* ==========================================================
+   1. IDENTIDAD VISUAL Y ESTADOS
+   Valores alineados con calendario.css
+========================================================== */
 
 :root {
-    /* Identidad institucional */
-    --navy: #17324D;
-    --green: #2E6B57;
-    --gold: #B8892F;
+    --calendar-navy: #17324D;
+    --calendar-green: #2E6B57;
+    --calendar-gold: #B8892F;
 
-    --text-primary: #263746;
-    --text-secondary: #596B78;
-    --text-muted: #71808B;
+    --calendar-text: #263746;
+    --calendar-muted: #5F7078;
 
-    --background: #F5F7F8;
-    --surface: #FFFFFF;
-    --border: #E1E7EA;
+    --calendar-background: #F5F7F8;
+    --calendar-surface: #FFFFFF;
+    --calendar-border: #DCE3E5;
 
-    /* Estados semánticos */
     --status-success: #246348;
     --status-info: #285F7C;
     --status-warning: #76550C;
@@ -34,1237 +33,702 @@
     --status-warning-bg: #F7F1E3;
     --status-danger-bg: #F6EAEA;
 
-    /* Dimensiones */
-    --sidebar-width: 270px;
-    --topbar-height: 76px;
-
-    /* Sombras */
-    --shadow-card: 0 3px 12px rgba(23, 50, 77, 0.045);
-    --shadow-soft: 0 5px 18px rgba(23, 50, 77, 0.07);
-
-    /* Bordes */
-    --radius-small: 8px;
-    --radius-medium: 12px;
-    --radius-large: 16px;
-
-    /* Transiciones */
-    --transition: 0.2s ease;
+    --calendar-radius: 12px;
+    --calendar-shadow: 0 3px 12px rgba(23, 50, 77, 0.05);
 }
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================================
+   2. CONTENIDO GENERAL DEL MÓDULO
+========================================================== */
+
+.content-wrapper {
+    width: 100%;
+    min-width: 0;
 }
 
-
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper p {
+    margin-top: 0;
 }
 
-
-body {
-    min-width: 320px;
-    min-height: 100vh;
-
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-
-    color: var(--text-primary);
-    background: var(--background);
-}
-
-
-button,
-input,
-select {
+.content-wrapper button,
+.content-wrapper input,
+.content-wrapper select {
     font: inherit;
 }
 
-
-button {
+.content-wrapper button {
     cursor: pointer;
 }
 
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-select:focus-visible,
-label:focus-visible {
-    outline: 3px solid #B8892F;
+.content-wrapper button:focus-visible,
+.content-wrapper a:focus-visible,
+.content-wrapper input:focus-visible,
+.content-wrapper select:focus-visible {
+    outline: 3px solid rgba(46, 107, 87, 0.35);
     outline-offset: 3px;
 }
 
 
-/* =========================================================
-   2. DISTRIBUCIÓN PRINCIPAL
-   ========================================================= */
-
-.dashboard-layout {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-}
-
-
-.sidebar-toggle-checkbox {
-    display: none;
-}
-
-
-/* =========================================================
-   3. MENÚ LATERAL
-   ========================================================= */
-
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    display: flex;
-    flex-direction: column;
-
-    width: var(--sidebar-width);
-    height: 100vh;
-
-    background: var(--surface);
-    border-right: 1px solid var(--border);
-
-    z-index: 100;
-}
-
-
-.sidebar-content {
-    display: flex;
-    flex-direction: column;
-
-    flex: 1;
-    min-height: 0;
-
-    overflow-y: auto;
-}
-
-
-/* MARCA */
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    min-height: 88px;
-    padding: 20px 24px;
-
-    border-bottom: 1px solid var(--border);
-}
-
-
-.brand-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 43px;
-    height: 43px;
-
-    flex-shrink: 0;
-
-    border-radius: 11px;
-
-    background: var(--navy);
-    color: white;
-
-    font-size: 25px;
-    font-weight: 800;
-}
-
-
-.brand-information {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-
-.brand-information strong {
-    color: var(--navy);
-
-    font-size: 19px;
-    font-weight: 800;
-    letter-spacing: 1px;
-}
-
-
-.brand-information span {
-    color: var(--text-secondary);
-    font-size: 13px;
-}
-
-
-/* NAVEGACIÓN */
-
-.navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-
-    padding: 27px 15px;
-}
-
-
-.navigation-section {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-
-.navigation-title {
-    display: block;
-
-    padding: 0 12px;
-    margin-bottom: 8px;
-
-    color: var(--text-muted);
-
-    font-size: 12px;
-    font-weight: 750;
-    letter-spacing: 0.9px;
-}
-
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 13px;
-
-    min-height: 46px;
-    padding: 10px 13px;
-
-    border-radius: 9px;
-
-    color: var(--text-secondary);
-
-    font-size: 15px;
-    font-weight: 550;
-
-    transition:
-        background var(--transition),
-        color var(--transition);
-}
-
-
-.nav-item i {
-    width: 20px;
-
-    text-align: center;
-    font-size: 17px;
-}
-
-
-.nav-item:hover {
-    background: #F0F4F5;
-    color: var(--navy);
-}
-
-
-.nav-item.active {
-    background: #EAF0F4;
-    color: var(--navy);
-
-    font-weight: 700;
-}
-
-
-.nav-item.active i {
-    color: var(--green);
-}
-
-
-/* =========================================================
-   4. PERFIL Y CERRAR SESIÓN
-   ========================================================= */
-
-.sidebar-footer {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    min-height: 86px;
-    padding: 15px 17px;
-
-    background: #FFFFFF;
-    border-top: 1px solid var(--border);
-
-    flex-shrink: 0;
-}
-
-
-.profile-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 43px;
-    height: 43px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
-    background: #EAF0F4;
-    color: var(--navy);
-
-    font-size: 15px;
-    font-weight: 750;
-}
-
-
-.profile-information {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-
-    flex: 1;
-    min-width: 0;
-}
-
-
-.profile-information strong {
-    overflow: hidden;
-
-    color: var(--text-primary);
-
-    font-size: 14px;
-    font-weight: 700;
-
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-
-.profile-information span {
-    color: var(--text-secondary);
-    font-size: 13px;
-}
-
-
-.logout-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 40px;
-    height: 40px;
-
-    flex-shrink: 0;
-
-    border: 1px solid transparent;
-    border-radius: 9px;
-
-    background: transparent;
-    color: var(--text-secondary);
-
-    font-size: 17px;
-
-    transition: all var(--transition);
-}
-
-
-.logout-link:hover {
-    background: var(--status-danger-bg);
-    border-color: #EACACA;
-
-    color: var(--status-danger);
-}
-
-
-/* =========================================================
-   5. CONTENIDO PRINCIPAL
-   ========================================================= */
-
-.main-content {
-    display: flex;
-    flex-direction: column;
-
-    min-height: 100vh;
-    min-width: 0;
-    width: calc(100% - var(--sidebar-width));
-
-    margin-left: var(--sidebar-width);
-}
-
-
-/* =========================================================
-   6. BARRA SUPERIOR
-   ========================================================= */
-
-.topbar {
-    position: sticky;
-    top: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: var(--topbar-height);
-    padding: 0 34px;
-
-    background: rgba(255, 255, 255, 0.97);
-    border-bottom: 1px solid var(--border);
-
-    z-index: 50;
-}
-
-
-.topbar-left,
-.topbar-actions {
-    display: flex;
-    align-items: center;
-}
-
-
-.topbar-left {
-    gap: 20px;
-}
-
-
-.breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    font-size: 14px;
-}
-
-
-.breadcrumb span {
-    color: var(--text-muted);
-}
-
-
-.breadcrumb i {
-    color: #9AA7AF;
-    font-size: 11px;
-}
-
-
-.breadcrumb strong {
-    color: var(--navy);
-    font-weight: 700;
-}
-
-
-.sidebar-toggle {
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    width: 42px;
-    height: 42px;
-
-    border-radius: 8px;
-
-    color: var(--navy);
-    cursor: pointer;
-}
-
-
-.topbar-actions {
-    gap: 26px;
-}
-
-
-.topbar-context {
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
-
-.topbar-user {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding-left: 20px;
-
-    border-left: 1px solid var(--border);
-}
-
-
-.topbar-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 39px;
-    height: 39px;
-
-    border-radius: 50%;
-
-    background: #EAF0F4;
-    color: var(--navy);
-
-    font-size: 14px;
-    font-weight: 750;
-}
-
-
-.topbar-user-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-
-
-.topbar-user-info strong {
-    color: var(--text-primary);
-    font-size: 13px;
-}
-
-
-.topbar-user-info span {
-    color: var(--text-secondary);
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   7. ÁREA DE TRABAJO
-   ========================================================= */
-
-.content-wrapper {
-    flex: 1;
-
-    width: 100%;
-    max-width: 1700px;
-
-    margin: 0 auto;
-    padding: 36px 38px 42px;
-}
-
-
-/* =========================================================
-   8. ENCABEZADO DE PÁGINA
-   ========================================================= */
+/* ==========================================================
+   3. ENCABEZADO DEL MÓDULO
+========================================================== */
 
 .page-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 25px;
+    gap: 28px;
 
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 
-
-.page-heading-information {
-    max-width: 760px;
-}
-
-
-.eyebrow {
-    display: block;
-
+.page-heading h2 {
     margin-bottom: 9px;
 
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.1px;
-}
-
-
-.page-heading h1 {
-    margin-bottom: 9px;
-
-    color: var(--navy);
-
-    font-size: 31px;
+    color: var(--calendar-navy);
+    font-size: 30px;
+    font-weight: 700;
     line-height: 1.25;
-    font-weight: 750;
 }
-
 
 .page-heading p {
-    max-width: 700px;
+    max-width: 650px;
+    margin-bottom: 0;
 
-    color: var(--text-secondary);
-
+    color: var(--calendar-muted);
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.6;
+}
+
+.page-heading .eyebrow {
+    display: block;
+    margin-bottom: 8px;
+
+    color: var(--calendar-green);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
 }
 
 
-/* BOTÓN PRINCIPAL */
+/* ==========================================================
+   4. BOTONES
+========================================================== */
 
-.primary-button {
+.page-heading .primary-button,
+.filter-toolbar .primary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 11px;
 
     min-height: 48px;
-    padding: 12px 20px;
+    padding: 12px 19px;
 
-    flex-shrink: 0;
+    border: 1px solid var(--calendar-green);
+    border-radius: 8px;
 
-    border: 1px solid var(--green);
-    border-radius: 9px;
-
-    background: var(--green);
-    color: white;
+    background: var(--calendar-green);
+    color: #FFFFFF;
 
     font-size: 15px;
-    font-weight: 700;
-
-    transition: all var(--transition);
-}
-
-
-.primary-button:hover {
-    background: #245744;
-    border-color: #245744;
-}
-
-
-/* =========================================================
-   9. TARJETAS DE INDICADORES
-   ========================================================= */
-
-.summary-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 19px;
-
-    margin-bottom: 30px;
-}
-
-
-.summary-card {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    min-height: 125px;
-    padding: 22px 20px;
-
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
-
-    box-shadow: var(--shadow-card);
+    font-weight: 600;
+    text-decoration: none;
 
     transition:
-        transform var(--transition),
-        box-shadow var(--transition);
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-
-.summary-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-soft);
+.page-heading .primary-button:hover,
+.filter-toolbar .primary-button:hover {
+    background: #245743;
+    box-shadow: 0 4px 10px rgba(46, 107, 87, 0.16);
 }
 
-
-.summary-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 49px;
-    height: 49px;
-
-    flex-shrink: 0;
-
-    border-radius: 12px;
-
-    background: #EAF0F4;
-    color: var(--navy);
-
-    font-size: 20px;
+.page-heading .primary-button i,
+.filter-toolbar .primary-button i {
+    font-size: 17px;
 }
 
-
-.success-icon {
-    background: var(--status-success-bg);
-    color: var(--status-success);
-}
-
-
-.warning-icon {
-    background: var(--status-warning-bg);
-    color: var(--status-warning);
-}
-
-
-.info-icon {
-    background: var(--status-info-bg);
-    color: var(--status-info);
-}
-
-
-.summary-information {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-
-    min-width: 0;
-}
-
-
-.summary-information > span {
-    color: var(--text-secondary);
-
-    font-size: 14px;
-    font-weight: 550;
-}
-
-
-.summary-information strong {
-    color: var(--navy);
-
-    font-size: 27px;
-    line-height: 1.3;
-    font-weight: 800;
-
-    font-variant-numeric: tabular-nums;
-}
-
-
-.summary-information small {
-    color: var(--text-muted);
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   10. PANEL DE DOCUMENTOS
-   ========================================================= */
-
-.documents-section {
-    padding: 27px;
-
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-large);
-
-    box-shadow: var(--shadow-card);
-}
-
-
-.section-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-
-    margin-bottom: 25px;
-}
-
-
-.panel-overline {
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.9px;
-}
-
-
-.section-heading h2 {
-    margin-bottom: 6px;
-
-    color: var(--navy);
-
-    font-size: 21px;
-    font-weight: 750;
-}
-
-
-.section-heading p {
-    color: var(--text-secondary);
-    font-size: 15px;
-}
-
-
-/* BOTÓN SECUNDARIO */
-
-.secondary-button {
+.export-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 9px;
 
     min-height: 43px;
-    padding: 10px 16px;
+    padding: 10px 15px;
 
-    border: 1px solid var(--border);
-    border-radius: 8px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
 
-    background: white;
-    color: var(--navy);
+    background: #FFFFFF;
+    color: var(--calendar-navy);
 
     font-size: 14px;
-    font-weight: 650;
+    font-weight: 600;
 
-    transition: all var(--transition);
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.export-button:hover {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
+}
+
+.export-button i {
+    font-size: 16px;
 }
 
 
-.secondary-button:hover {
-    background: #F3F6F7;
-    border-color: #BAC8D0;
+/* ==========================================================
+   5. TARJETAS DE RESUMEN
+========================================================== */
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+
+    margin-bottom: 26px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    min-width: 0;
+    min-height: 126px;
+    padding: 21px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: var(--calendar-radius);
+
+    background: var(--calendar-surface);
+    box-shadow: var(--calendar-shadow);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(23, 50, 77, 0.08);
+}
+
+.summary-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex: 0 0 51px;
+    width: 51px;
+    height: 51px;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+}
+
+.navy-icon {
+    background: #EAF0F5;
+    color: var(--calendar-navy);
+}
+
+.gold-icon {
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
+}
+
+.green-icon {
+    background: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.info-icon {
+    background: var(--status-info-bg);
+    color: var(--status-info);
+}
+
+.summary-information {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    min-width: 0;
+}
+
+.summary-information > span {
+    color: var(--calendar-muted);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.summary-information strong {
+    color: var(--calendar-navy);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+}
+
+.summary-information small {
+    color: var(--calendar-muted);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 
-/* =========================================================
-   11. BARRA DE FILTROS
-   ========================================================= */
+/* ==========================================================
+   6. PANEL DE DOCUMENTOS
+========================================================== */
+
+.documents-section {
+    min-width: 0;
+    padding: 25px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: var(--calendar-radius);
+
+    background: var(--calendar-surface);
+    box-shadow: var(--calendar-shadow);
+}
+
+.documents-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.documents-heading > div {
+    min-width: 0;
+}
+
+.panel-overline {
+    display: block;
+    margin-bottom: 7px;
+
+    color: var(--calendar-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.documents-heading h3 {
+    margin-bottom: 8px;
+
+    color: var(--calendar-navy);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.documents-heading p {
+    margin-bottom: 0;
+
+    color: var(--calendar-muted);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+
+/* ==========================================================
+   7. BÚSQUEDA Y FILTROS
+========================================================== */
 
 .filter-toolbar {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
 
-    margin-bottom: 23px;
-    padding: 17px;
+    margin-bottom: 20px;
+    padding: 16px;
 
-    background: #F8FAFB;
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 8px;
+
+    background: #F8FAFA;
 }
-
 
 .search-box {
     display: flex;
     align-items: center;
-    gap: 11px;
+    gap: 10px;
 
-    flex: 1;
-    min-width: 210px;
-
-    min-height: 45px;
+    flex: 1 1 260px;
+    min-width: 220px;
+    min-height: 46px;
     padding: 0 13px;
 
-    background: white;
-    border: 1px solid #DCE4E8;
-    border-radius: 8px;
-}
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
 
+    background: #FFFFFF;
+}
 
 .search-box i {
-    color: var(--text-muted);
+    flex-shrink: 0;
+    color: var(--calendar-muted);
     font-size: 15px;
 }
-
 
 .search-box input {
     width: 100%;
     min-width: 0;
-    height: 43px;
+    height: 44px;
 
     border: none;
     outline: none;
 
     background: transparent;
-    color: var(--text-primary);
+    color: var(--calendar-text);
 
     font-size: 14px;
 }
 
-
 .search-box input::placeholder {
-    color: #788791;
+    color: #687A82;
+    opacity: 1;
 }
 
-
 .filter-toolbar select {
-    min-width: 165px;
-    min-height: 45px;
+    flex: 0 1 185px;
 
+    min-width: 155px;
+    min-height: 46px;
     padding: 0 12px;
 
-    border: 1px solid #DCE4E8;
-    border-radius: 8px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
 
-    background: white;
-    color: var(--text-primary);
+    background: #FFFFFF;
+    color: var(--calendar-text);
 
     font-size: 14px;
     cursor: pointer;
 }
 
-
-.filter-toolbar select:focus {
-    border-color: var(--green);
-    outline: 2px solid rgba(46, 107, 87, 0.15);
-}
-
-
-.filter-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-
-    min-height: 45px;
-    padding: 10px 16px;
-
-    border: 1px solid var(--navy);
-    border-radius: 8px;
-
-    background: var(--navy);
-    color: white;
-
+.filter-toolbar .primary-button {
+    min-height: 46px;
+    padding: 10px 17px;
     font-size: 14px;
-    font-weight: 650;
+}
 
-    transition: all var(--transition);
+.search-box:focus-within,
+.filter-toolbar select:focus-visible {
+    border-color: var(--calendar-green);
 }
 
 
-.filter-button:hover {
-    background: #25445F;
-}
-
-
-/* =========================================================
-   12. TABLA DE DOCUMENTOS
-   ========================================================= */
+/* ==========================================================
+   8. TABLA DOCUMENTAL
+========================================================== */
 
 .table-container {
     width: 100%;
-
     overflow-x: auto;
 
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 8px;
 }
 
-
-table {
+.table-container table {
     width: 100%;
-    min-width: 950px;
+    min-width: 1000px;
 
     border-collapse: collapse;
+    border-spacing: 0;
+
     text-align: left;
 }
 
-
-thead {
-    background: #F2F5F7;
+.table-container thead {
+    background: #F4F7F8;
 }
 
+.table-container th {
+    padding: 16px 14px;
 
-th {
-    height: 54px;
-    padding: 15px 17px;
+    border-bottom: 1px solid var(--calendar-border);
 
-    border-bottom: 1px solid var(--border);
-
-    color: #405564;
-
-    font-size: 13px;
-    font-weight: 750;
+    color: var(--calendar-navy);
+    font-size: 14px;
+    font-weight: 700;
     white-space: nowrap;
 }
 
+.table-container td {
+    padding: 17px 14px;
 
-td {
-    height: 76px;
-    padding: 13px 17px;
+    border-bottom: 1px solid var(--calendar-border);
 
-    border-bottom: 1px solid #E9EEF0;
-
-    color: var(--text-secondary);
-
+    color: var(--calendar-text);
     font-size: 14px;
+    line-height: 1.5;
     vertical-align: middle;
 }
 
-
-tbody tr {
-    transition: background var(--transition);
-}
-
-
-tbody tr:hover {
-    background: #F8FAFB;
-}
-
-
-tbody tr:last-child td {
+.table-container tbody tr:last-child td {
     border-bottom: none;
 }
 
+.table-container tbody tr {
+    transition: background 0.15s ease;
+}
 
-/* INFORMACIÓN DEL DOCUMENTO */
+.table-container tbody tr:hover {
+    background: #F8FAFA;
+}
+
+
+/* ==========================================================
+   9. IDENTIFICACIÓN DEL DOCUMENTO
+========================================================== */
 
 .document-name {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 13px;
 
-    min-width: 190px;
+    min-width: 215px;
 }
-
 
 .document-name > i {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 39px;
-    height: 43px;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 46px;
 
-    flex-shrink: 0;
+    border-radius: 8px;
 
-    border-radius: 7px;
-
-    background: #F8ECEC;
-    color: #A94444;
-
-    font-size: 19px;
+    font-size: 21px;
 }
 
+.document-name .pdf-icon {
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+}
 
-.document-name > .excel-icon {
-    background: #EAF2ED;
+.document-name .excel-icon {
+    background: var(--status-success-bg);
     color: var(--status-success);
 }
 
-
-.document-name div {
+.document-name > div {
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 5px;
 
     min-width: 0;
 }
 
-
 .document-name strong {
-    color: var(--text-primary);
-
+    color: var(--calendar-navy);
     font-size: 14px;
     font-weight: 700;
+    line-height: 1.4;
 }
-
 
 .document-name span {
-    color: var(--text-muted);
-    font-size: 12px;
+    color: var(--calendar-muted);
+    font-size: 13px;
+    line-height: 1.4;
 }
 
 
-/* =========================================================
-   13. ETIQUETAS DE ESTADO
-   ========================================================= */
+/* ==========================================================
+   10. ESTADOS DOCUMENTALES
+   Mismos estilos y colores del calendario tributario
+========================================================== */
 
 .status {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
 
-    min-height: 30px;
-    padding: 5px 11px;
+    width: fit-content;
+    padding: 6px 10px;
 
-    border: 1px solid currentColor;
-    border-radius: 20px;
+    border-radius: 5px;
 
-    font-size: 12px;
-    font-weight: 750;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
     white-space: nowrap;
 }
 
-
-.status::before {
-    content: "";
-
-    width: 7px;
-    height: 7px;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-    background: currentColor;
-}
-
-
-.status-success {
-    background: var(--status-success-bg);
-    color: var(--status-success);
-}
-
-
-.status-info {
-    background: var(--status-info-bg);
-    color: var(--status-info);
-}
-
-
-.status-warning {
+.status-pending {
     background: var(--status-warning-bg);
     color: var(--status-warning);
 }
 
+.status-progress {
+    background: var(--status-info-bg);
+    color: var(--status-info);
+}
 
-.status-danger {
+.status-completed {
+    background: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.status-overdue {
     background: var(--status-danger-bg);
     color: var(--status-danger);
 }
 
 
-/* =========================================================
-   14. ACCIONES DE LA TABLA
-   ========================================================= */
+/* ==========================================================
+   11. ACCIONES DE TABLA
+========================================================== */
 
 .table-actions {
     display: flex;
     align-items: center;
     gap: 7px;
+
+    white-space: nowrap;
 }
 
-
 .table-actions button {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    width: 35px;
-    height: 35px;
+    width: 36px;
+    height: 36px;
 
-    border: 1px solid transparent;
+    border: 1px solid var(--calendar-border);
     border-radius: 7px;
 
-    background: transparent;
-    color: var(--text-secondary);
+    background: #FFFFFF;
+    color: var(--calendar-navy);
 
-    font-size: 15px;
-
-    transition: all var(--transition);
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
 }
-
 
 .table-actions button:hover {
-    background: #EAF0F4;
-    border-color: #D8E2E8;
-
-    color: var(--navy);
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
+    color: var(--calendar-green);
 }
 
-
-/* =========================================================
-   15. PAGINACIÓN
-   ========================================================= */
-
-.table-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-
-    padding-top: 22px;
-}
-
-
-.table-pagination > span {
-    color: var(--text-secondary);
+.table-actions button i {
     font-size: 14px;
 }
 
 
-.pagination-actions {
+/* ==========================================================
+   12. PIE Y PAGINACIÓN DE TABLA
+========================================================== */
+
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    padding-top: 20px;
+}
+
+.table-footer > span {
+    color: var(--calendar-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pagination {
     display: flex;
     align-items: center;
     gap: 6px;
 }
 
-
-.pagination-actions button {
-    display: flex;
+.pagination button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
 
-    min-width: 37px;
-    min-height: 37px;
-    padding: 7px 10px;
+    min-width: 38px;
+    min-height: 38px;
+    padding: 0 10px;
 
-    border: 1px solid var(--border);
-    border-radius: 7px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 6px;
 
-    background: white;
-    color: var(--text-secondary);
+    background: #FFFFFF;
+    color: var(--calendar-text);
 
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
 
-    transition: all var(--transition);
+    transition: all 0.2s ease;
 }
 
-
-.pagination-actions button:hover:not(:disabled):not(.current-page) {
-    background: #F0F4F5;
-    color: var(--navy);
+.pagination button:hover:not(:disabled):not(.pagination-active) {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
 }
 
+.pagination .pagination-active {
+    border-color: var(--calendar-green);
 
-.pagination-actions button.current-page {
-    background: var(--navy);
-    border-color: var(--navy);
-    color: white;
+    background: var(--calendar-green);
+    color: #FFFFFF;
 }
 
-
-.pagination-actions button:disabled {
+.pagination button:disabled {
     opacity: 0.45;
     cursor: not-allowed;
 }
 
 
-/* =========================================================
-   16. PIE DE PÁGINA
-   ========================================================= */
+/* ==========================================================
+   13. PIE DEL CONTENIDO
+========================================================== */
 
-.content-footer {
+.content-wrapper > .content-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
 
-    min-height: 58px;
-    padding: 15px 38px;
+    padding: 18px 0;
+    margin-top: 26px;
 
-    background: #FFFFFF;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--calendar-border);
 
-    color: var(--text-secondary);
+    color: var(--calendar-muted);
     font-size: 13px;
 }
 
 
-/* =========================================================
-   17. RESPONSIVE — TABLET
-   ========================================================= */
+/* ==========================================================
+   14. RESPONSIVE: PANTALLAS MEDIANAS
+========================================================== */
 
 @media (max-width: 1200px) {
 
@@ -1281,76 +745,38 @@ tbody tr:last-child td {
     }
 
     .filter-toolbar select {
-        flex: 1;
+        flex: 1 1 180px;
     }
 
 }
 
+
+/* ==========================================================
+   15. RESPONSIVE: TABLETAS
+========================================================== */
 
 @media (max-width: 900px) {
 
-    :root {
-        --sidebar-width: 250px;
+    .page-heading {
+        gap: 20px;
     }
 
-    .sidebar-toggle {
-        display: flex;
+    .documents-section {
+        padding: 22px;
     }
 
-    .sidebar {
-        transform: translateX(-100%);
-        transition: transform 0.25s ease;
-    }
-
-    .main-content {
-        width: 100%;
-        margin-left: 0;
-    }
-
-    .sidebar-toggle-checkbox:checked ~ .sidebar {
-        transform: translateX(0);
-    }
-
-    .content-wrapper {
-        padding: 30px 24px;
-    }
-
-    .topbar {
-        padding: 0 24px;
+    .table-container table {
+        min-width: 950px;
     }
 
 }
 
 
-/* =========================================================
-   18. RESPONSIVE — MÓVILES
-   ========================================================= */
+/* ==========================================================
+   16. RESPONSIVE: MÓVILES
+========================================================== */
 
 @media (max-width: 600px) {
-
-    .topbar {
-        min-height: 68px;
-        padding: 0 16px;
-    }
-
-    .topbar-context,
-    .topbar-user-info {
-        display: none;
-    }
-
-    .topbar-user {
-        padding-left: 0;
-        border-left: none;
-    }
-
-    .breadcrumb {
-        gap: 7px;
-        font-size: 13px;
-    }
-
-    .content-wrapper {
-        padding: 25px 16px 30px;
-    }
 
     .page-heading {
         align-items: flex-start;
@@ -1358,7 +784,7 @@ tbody tr:last-child td {
         gap: 18px;
     }
 
-    .page-heading h1 {
+    .page-heading h2 {
         font-size: 27px;
     }
 
@@ -1366,7 +792,7 @@ tbody tr:last-child td {
         font-size: 15px;
     }
 
-    .primary-button {
+    .page-heading .primary-button {
         width: 100%;
     }
 
@@ -1376,16 +802,21 @@ tbody tr:last-child td {
     }
 
     .summary-card {
-        min-height: 108px;
+        min-height: 112px;
     }
 
     .documents-section {
-        padding: 19px 14px;
+        padding: 19px 15px;
     }
 
-    .section-heading {
+    .documents-heading {
         align-items: flex-start;
         flex-direction: column;
+        gap: 16px;
+    }
+
+    .documents-heading .export-button {
+        width: 100%;
     }
 
     .filter-toolbar {
@@ -1396,34 +827,32 @@ tbody tr:last-child td {
 
     .search-box,
     .filter-toolbar select,
-    .filter-button {
+    .filter-toolbar .primary-button {
         width: 100%;
         flex: none;
     }
 
-    .table-pagination {
+    .table-footer {
         align-items: flex-start;
         flex-direction: column;
     }
 
-    .pagination-actions {
+    .pagination {
         flex-wrap: wrap;
     }
 
-    .content-footer {
+    .content-wrapper > .content-footer {
         align-items: flex-start;
         flex-direction: column;
-        gap: 5px;
-
-        padding: 15px 18px;
+        gap: 6px;
     }
 
 }
 
 
-/* =========================================================
-   19. ACCESIBILIDAD Y PREFERENCIAS DEL USUARIO
-   ========================================================= */
+/* ==========================================================
+   17. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1439,6 +868,6 @@ tbody tr:last-child td {
 }
 
 
-/* =========================================================
+/* ==========================================================
    FIN DE DOCUMENTOS
-   ========================================================= */
+========================================================== */

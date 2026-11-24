@@ -44,102 +44,145 @@
         </label>
 
 
-        <!-- MENÚ LATERAL -->
+        <!-- ==================================================
+             PANEL LATERAL
+        =================================================== -->
         <aside class="sidebar">
 
-            <!-- IDENTIDAD DE MARCA -->
-            <div class="brand">
-                <div class="brand-symbol">N</div>
+            <div class="sidebar-content">
 
-                <div class="brand-information">
-                    <h1>NOVERIS</h1>
-                    <span>GESTIÓN CONTABLE Y FINANCIERA</span>
+                <!-- Identidad de marca -->
+                <div class="brand">
+
+                    <div class="brand-symbol">
+                        <span>N</span>
+                    </div>
+
+                    <div class="brand-information">
+                        <h1 class="brand-name">NOVERIS</h1>
+                        <span class="brand-description">
+                            GESTIÓN CONTABLE Y FINANCIERA
+                        </span>
+                    </div>
+
                 </div>
+
+                <!-- Navegación principal -->
+                <div class="sidebar-section">
+
+                    <span class="section-label">
+                        MENÚ PRINCIPAL
+                    </span>
+
+                    <nav class="navigation">
+
+                        <a href="dashboard.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-house"></i>
+                            </span>
+                            <span>Panel principal</span>
+                        </a>
+
+                        <a href="clientes.html" 
+                            class="nav-item active"
+                            aria-current="page"
+
+                        >
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </span>
+                            <span>Clientes</span>
+                        </a>
+
+                        <a href="servicios.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </span>
+                            <span>Servicios contables</span>
+                        </a>
+
+                        <a href="calendario.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </span>
+                            <span>Calendario tributario</span>
+                        </a>
+
+                        <a href="documentos.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-folder-open"></i>
+                            </span>
+                            <span>Documentos</span>
+                        </a>
+
+                        <a href="cartera.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </span>
+                            <span>Cartera y pagos</span>
+                        </a>
+
+                        <a href="informes.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-chart-column"></i>
+                            </span>
+                            <span>Informes</span>
+                        </a>
+
+                    </nav>
+
+                </div>
+
+                <!-- Administración -->
+                <div class="sidebar-section">
+
+                    <span class="section-label">
+                        ADMINISTRACIÓN
+                    </span>
+
+                    <nav class="navigation secondary-navigation">
+
+                        <a href="usuarios.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </span>
+                            <span>Usuarios</span>
+                        </a>
+
+                        <a href="configuracion.html" class="nav-item">
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-gear"></i>
+                            </span>
+                            <span>Configuración</span>
+                        </a>
+
+                    </nav>
+
+                </div>
+
             </div>
 
-
-            <!-- MENÚ PRINCIPAL -->
-            <div class="sidebar-section">
-
-                <span class="section-label">MENÚ PRINCIPAL</span>
-
-                <nav class="navigation" aria-label="Menú principal">
-
-                    <a href="dashboard.html" class="nav-item">
-                        <i class="fa-solid fa-table-columns nav-icon"></i>
-                        <span>Panel principal</span>
-                    </a>
-
-                    <a href="clientes.html" class="nav-item active" aria-current="page">
-                        <i class="fa-solid fa-users nav-icon"></i>
-                        <span>Clientes</span>
-                    </a>
-
-                    <a href="servicios.html" class="nav-item">
-                        <i class="fa-solid fa-file-invoice-dollar nav-icon"></i>
-                        <span>Servicios contables</span>
-                    </a>
-
-                    <a href="calendario.html" class="nav-item">
-                        <i class="fa-solid fa-calendar-days nav-icon"></i>
-                        <span>Calendario tributario</span>
-                    </a>
-
-                    <a href="documentos.html" class="nav-item">
-                        <i class="fa-solid fa-folder-open nav-icon"></i>
-                        <span>Documentos</span>
-                    </a>
-
-                    <a href="cartera.html" class="nav-item">
-                        <i class="fa-solid fa-wallet nav-icon"></i>
-                        <span>Cartera y pagos</span>
-                    </a>
-
-                    <a href="informes.html" class="nav-item">
-                        <i class="fa-solid fa-chart-column nav-icon"></i>
-                        <span>Informes</span>
-                    </a>
-
-                </nav>
-            </div>
-
-
-            <!-- ADMINISTRACIÓN -->
-            <div class="sidebar-section secondary-navigation">
-
-                <span class="section-label">ADMINISTRACIÓN</span>
-
-                <nav class="navigation" aria-label="Administración">
-
-                    <a href="usuarios.html" class="nav-item">
-                        <i class="fa-solid fa-user-group nav-icon"></i>
-                        <span>Usuarios</span>
-                    </a>
-
-                    <a href="configuracion.html" class="nav-item">
-                        <i class="fa-solid fa-gear nav-icon"></i>
-                        <span>Configuración</span>
-                    </a>
-
-                </nav>
-            </div>
-
-
-            <!-- PERFIL -->
+            <!-- Perfil y salida: permanecen en el pie del sidebar -->
             <div class="sidebar-footer">
 
-                <div class="profile-avatar">LK</div>
+                <div class="profile-avatar">
+                    LK
+                </div>
 
                 <div class="profile-information">
-                    <strong>Lyzeth Katerine</strong>
-                    <span>Administradora</span>
+                    <span class="profile-name">
+                        Lyzeth Katerine
+                    </span>
+                    <span class="profile-role">
+                        Administradora
+                    </span>
                 </div>
 
                 <a
                     href="../index.html"
                     class="logout-link"
-                    title="Cerrar sesión"
-                    aria-label="Cerrar sesión"
+                    aria-label="Salir de la plataforma"
+                    title="Salir"
                 >
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>

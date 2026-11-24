@@ -12,117 +12,183 @@
 
     <title>Documentos | NOVERIS</title>
 
-    <link rel="stylesheet" href="../css/documentos.css">
-
-    <!-- Iconos -->
+    <!-- Iconografía -->
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     >
+
+    <!-- Estilos generales y del módulo -->
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/documentos.css">
 </head>
 
 <body>
 
     <div class="dashboard-layout">
 
+        <!-- CONTROL DEL MENÚ LATERAL -->
         <input
             type="checkbox"
-            id="sidebar-toggle-checkbox"
+            id="sidebar-toggle"
             class="sidebar-toggle-checkbox"
+            aria-label="Contraer o expandir el menú lateral"
         >
 
-        <!-- MENÚ LATERAL -->
+        <label
+            for="sidebar-toggle"
+            class="sidebar-toggle"
+            title="Contraer o expandir menú"
+        >
+            <i class="fa-solid fa-angles-left toggle-close"></i>
+            <i class="fa-solid fa-angles-right toggle-open"></i>
+        </label>
+
+
+        <!-- ==================================================
+             PANEL LATERAL
+        =================================================== -->
         <aside class="sidebar">
 
             <div class="sidebar-content">
 
+                <!-- Identidad de marca -->
                 <div class="brand">
-                    <div class="brand-logo">N</div>
+
+                    <div class="brand-symbol">
+                        <span>N</span>
+                    </div>
 
                     <div class="brand-information">
-                        <strong>NOVERIS</strong>
-                        <span>Gestión contable</span>
+                        <h1 class="brand-name">NOVERIS</h1>
+
+                        <span class="brand-description">
+                            GESTIÓN CONTABLE Y FINANCIERA
+                        </span>
                     </div>
+
                 </div>
 
-                <nav class="navigation">
 
-                    <div class="navigation-section">
-                        <span class="navigation-title">
-                            MENÚ PRINCIPAL
-                        </span>
+                <!-- Navegación principal -->
+                <div class="sidebar-section">
+
+                    <span class="section-label">
+                        MENÚ PRINCIPAL
+                    </span>
+
+                    <nav class="navigation">
 
                         <a href="dashboard.html" class="nav-item">
-                            <i class="fa-solid fa-house"></i>
-                            <span>Dashboard</span>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-house"></i>
+                            </span>
+                            <span>Panel principal</span>
                         </a>
 
                         <a href="clientes.html" class="nav-item">
-                            <i class="fa-solid fa-users"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </span>
                             <span>Clientes</span>
                         </a>
 
                         <a href="servicios.html" class="nav-item">
-                            <i class="fa-solid fa-briefcase"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-file-invoice-dollar"></i>
+                            </span>
                             <span>Servicios contables</span>
                         </a>
 
                         <a href="calendario.html" class="nav-item">
-                            <i class="fa-solid fa-calendar-days"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-calendar-days"></i>
+                            </span>
                             <span>Calendario tributario</span>
                         </a>
 
-                        <a href="documentos.html" class="nav-item active">
-                            <i class="fa-solid fa-folder-open"></i>
+                        <a
+                            href="documentos.html"
+                            class="nav-item active"
+                            aria-current="page"
+                        >
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-folder-open"></i>
+                            </span>
                             <span>Documentos</span>
                         </a>
 
                         <a href="cartera.html" class="nav-item">
-                            <i class="fa-solid fa-wallet"></i>
-                            <span>Cartera</span>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-wallet"></i>
+                            </span>
+                            <span>Cartera y pagos</span>
                         </a>
 
                         <a href="informes.html" class="nav-item">
-                            <i class="fa-solid fa-chart-column"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-chart-column"></i>
+                            </span>
                             <span>Informes</span>
                         </a>
-                    </div>
 
-                    <div class="navigation-section">
-                        <span class="navigation-title">
-                            ADMINISTRACIÓN
-                        </span>
+                    </nav>
+
+                </div>
+
+
+                <!-- Administración -->
+                <div class="sidebar-section">
+
+                    <span class="section-label">
+                        ADMINISTRACIÓN
+                    </span>
+
+                    <nav class="navigation secondary-navigation">
 
                         <a href="usuarios.html" class="nav-item">
-                            <i class="fa-solid fa-user-gear"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </span>
                             <span>Usuarios</span>
                         </a>
 
                         <a href="configuracion.html" class="nav-item">
-                            <i class="fa-solid fa-gear"></i>
+                            <span class="nav-icon">
+                                <i class="fa-solid fa-gear"></i>
+                            </span>
                             <span>Configuración</span>
                         </a>
-                    </div>
 
-                </nav>
+                    </nav>
+
+                </div>
 
             </div>
 
-            <!-- PERFIL DEL USUARIO -->
+
+            <!-- Perfil y salida -->
             <div class="sidebar-footer">
 
-                <div class="profile-avatar">LK</div>
+                <div class="profile-avatar">
+                    LK
+                </div>
 
                 <div class="profile-information">
-                    <strong>Lyzeth Katerine</strong>
-                    <span>Administradora</span>
+                    <span class="profile-name">
+                        Lyzeth Katerine
+                    </span>
+
+                    <span class="profile-role">
+                        Administradora
+                    </span>
                 </div>
 
                 <a
                     href="../index.html"
                     class="logout-link"
-                    title="Cerrar sesión"
-                    aria-label="Cerrar sesión"
+                    aria-label="Salir de la plataforma"
+                    title="Salir"
                 >
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </a>
@@ -131,62 +197,72 @@
 
         </aside>
 
-        <!-- CONTENIDO PRINCIPAL -->
+
+        <!-- ==================================================
+             CONTENIDO PRINCIPAL
+        =================================================== -->
         <main class="main-content">
+
 
             <!-- BARRA SUPERIOR -->
             <header class="topbar">
 
-                <div class="topbar-left">
+                <div class="breadcrumb">
 
-                    <label
-                        for="sidebar-toggle-checkbox"
-                        class="sidebar-toggle"
-                        aria-label="Mostrar u ocultar menú"
-                    >
-                        <i class="fa-solid fa-bars"></i>
-                    </label>
+                    <a href="dashboard.html">
+                        Inicio
+                    </a>
 
-                    <div class="breadcrumb">
-                        <span>Inicio</span>
-                        <i class="fa-solid fa-chevron-right"></i>
-                        <strong>Documentos</strong>
-                    </div>
+                    <span>/</span>
+
+                    <strong>Documentos</strong>
 
                 </div>
 
+
                 <div class="topbar-actions">
 
-                    <span class="topbar-context">
-                        Panel administrativo
-                    </span>
+                    <div class="current-context">
+                        <span class="context-indicator"></span>
+                        Gestión administrativa
+                    </div>
+
+                    <div class="topbar-divider"></div>
 
                     <div class="topbar-user">
-                        <div class="topbar-avatar">LK</div>
+
+                        <div class="profile-avatar small">
+                            LK
+                        </div>
 
                         <div class="topbar-user-info">
-                            <strong>Administradora</strong>
-                            <span>Gestión contable</span>
+                            <strong>Lyzeth Katerine</strong>
+                            <span>Administradora</span>
                         </div>
+
                     </div>
 
                 </div>
 
             </header>
 
-            <!-- ÁREA DE TRABAJO -->
+
+            <!-- ==================================================
+                 CONTENIDO DEL MÓDULO: DOCUMENTOS
+            =================================================== -->
             <div class="content-wrapper">
 
-                <!-- ENCABEZADO -->
+
+                <!-- ENCABEZADO DEL MÓDULO -->
                 <section class="page-heading">
 
-                    <div class="page-heading-information">
+                    <div>
 
                         <span class="eyebrow">
                             GESTIÓN DOCUMENTAL
                         </span>
 
-                        <h1>Documentos</h1>
+                        <h2>Documentos</h2>
 
                         <p>
                             Administra, consulta y realiza seguimiento
@@ -196,19 +272,25 @@
 
                     </div>
 
-                    <button class="primary-button" type="button">
+                    <button type="button" class="primary-button">
                         <i class="fa-solid fa-cloud-arrow-up"></i>
                         Cargar documento
                     </button>
 
                 </section>
 
-                <!-- INDICADORES -->
-                <section class="summary-grid">
+
+                <!-- ==================================================
+                     INDICADORES DOCUMENTALES
+                =================================================== -->
+                <section
+                    class="summary-grid"
+                    aria-label="Resumen documental"
+                >
 
                     <article class="summary-card">
 
-                        <div class="summary-icon">
+                        <div class="summary-icon navy-icon">
                             <i class="fa-solid fa-folder"></i>
                         </div>
 
@@ -220,9 +302,10 @@
 
                     </article>
 
+
                     <article class="summary-card">
 
-                        <div class="summary-icon success-icon">
+                        <div class="summary-icon green-icon">
                             <i class="fa-solid fa-circle-check"></i>
                         </div>
 
@@ -234,9 +317,10 @@
 
                     </article>
 
+
                     <article class="summary-card">
 
-                        <div class="summary-icon warning-icon">
+                        <div class="summary-icon gold-icon">
                             <i class="fa-solid fa-clock"></i>
                         </div>
 
@@ -247,6 +331,7 @@
                         </div>
 
                     </article>
+
 
                     <article class="summary-card">
 
@@ -264,35 +349,42 @@
 
                 </section>
 
-                <!-- PANEL DE DOCUMENTOS -->
+
+                <!-- ==================================================
+                     PANEL DE DOCUMENTOS REGISTRADOS
+                =================================================== -->
                 <section class="documents-section">
 
-                    <div class="section-heading">
+                    <div class="documents-heading">
 
                         <div>
+
                             <span class="panel-overline">
                                 ARCHIVO DOCUMENTAL
                             </span>
 
-                            <h2>Documentos registrados</h2>
+                            <h3>Documentos registrados</h3>
 
                             <p>
                                 Consulta y organiza la documentación
                                 relacionada con cada cliente.
                             </p>
+
                         </div>
 
-                        <button class="secondary-button" type="button">
-                            <i class="fa-solid fa-download"></i>
+                        <button type="button" class="export-button">
+                            <i class="fa-solid fa-file-arrow-down"></i>
                             Exportar
                         </button>
 
                     </div>
 
-                    <!-- FILTROS -->
+
+                    <!-- FILTROS Y BÚSQUEDA -->
                     <div class="filter-toolbar">
 
                         <div class="search-box">
+
                             <i class="fa-solid fa-magnifying-glass"></i>
 
                             <input
@@ -300,32 +392,37 @@
                                 placeholder="Buscar por documento o cliente..."
                                 aria-label="Buscar documentos"
                             >
+
                         </div>
+
 
                         <select aria-label="Filtrar por categoría">
                             <option value="">Todas las categorías</option>
-                            <option>Tributarios</option>
-                            <option>Contables</option>
-                            <option>Facturación</option>
-                            <option>Identificación</option>
-                            <option>Otros</option>
+                            <option value="tributarios">Tributarios</option>
+                            <option value="contables">Contables</option>
+                            <option value="facturacion">Facturación</option>
+                            <option value="identificacion">Identificación</option>
+                            <option value="otros">Otros</option>
                         </select>
+
 
                         <select aria-label="Filtrar por estado">
                             <option value="">Todos los estados</option>
-                            <option>Recibido</option>
-                            <option>Por revisar</option>
-                            <option>Pendiente</option>
+                            <option value="recibido">Recibido</option>
+                            <option value="revision">Por revisar</option>
+                            <option value="pendiente">Pendiente</option>
                         </select>
 
-                        <button class="filter-button" type="button">
+
+                        <button type="button" class="primary-button">
                             <i class="fa-solid fa-filter"></i>
                             Filtrar
                         </button>
 
                     </div>
 
-                    <!-- TABLA -->
+
+                    <!-- TABLA DOCUMENTAL -->
                     <div class="table-container">
 
                         <table>
@@ -341,17 +438,22 @@
                                 </tr>
                             </thead>
 
+
                             <tbody>
 
+                                <!-- DOCUMENTO 1 -->
                                 <tr>
+
                                     <td>
                                         <div class="document-name">
+
                                             <i class="fa-solid fa-file-pdf pdf-icon"></i>
 
                                             <div>
                                                 <strong>Declaración de IVA</strong>
                                                 <span>PDF · 2.4 MB</span>
                                             </div>
+
                                         </div>
                                     </td>
 
@@ -362,37 +464,57 @@
                                     <td>18/11/2026</td>
 
                                     <td>
-                                        <span class="status status-success">
+                                        <span class="status status-completed">
                                             Recibido
                                         </span>
                                     </td>
 
                                     <td>
                                         <div class="table-actions">
-                                            <button type="button" title="Visualizar">
+
+                                            <button
+                                                type="button"
+                                                title="Visualizar documento"
+                                                aria-label="Visualizar declaración de IVA"
+                                            >
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
 
-                                            <button type="button" title="Descargar">
+                                            <button
+                                                type="button"
+                                                title="Descargar documento"
+                                                aria-label="Descargar declaración de IVA"
+                                            >
                                                 <i class="fa-solid fa-download"></i>
                                             </button>
 
-                                            <button type="button" title="Más opciones">
+                                            <button
+                                                type="button"
+                                                title="Más opciones"
+                                                aria-label="Más opciones para declaración de IVA"
+                                            >
                                                 <i class="fa-solid fa-ellipsis"></i>
                                             </button>
+
                                         </div>
                                     </td>
+
                                 </tr>
 
+
+                                <!-- DOCUMENTO 2 -->
                                 <tr>
+
                                     <td>
                                         <div class="document-name">
+
                                             <i class="fa-solid fa-file-pdf pdf-icon"></i>
 
                                             <div>
                                                 <strong>Registro Único Tributario</strong>
                                                 <span>PDF · 1.8 MB</span>
                                             </div>
+
                                         </div>
                                     </td>
 
@@ -403,37 +525,57 @@
                                     <td>19/11/2026</td>
 
                                     <td>
-                                        <span class="status status-info">
+                                        <span class="status status-progress">
                                             Por revisar
                                         </span>
                                     </td>
 
                                     <td>
                                         <div class="table-actions">
-                                            <button type="button" title="Visualizar">
+
+                                            <button
+                                                type="button"
+                                                title="Visualizar documento"
+                                                aria-label="Visualizar Registro Único Tributario"
+                                            >
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
 
-                                            <button type="button" title="Descargar">
+                                            <button
+                                                type="button"
+                                                title="Descargar documento"
+                                                aria-label="Descargar Registro Único Tributario"
+                                            >
                                                 <i class="fa-solid fa-download"></i>
                                             </button>
 
-                                            <button type="button" title="Más opciones">
+                                            <button
+                                                type="button"
+                                                title="Más opciones"
+                                                aria-label="Más opciones para Registro Único Tributario"
+                                            >
                                                 <i class="fa-solid fa-ellipsis"></i>
                                             </button>
+
                                         </div>
                                     </td>
+
                                 </tr>
 
+
+                                <!-- DOCUMENTO 3 -->
                                 <tr>
+
                                     <td>
                                         <div class="document-name">
+
                                             <i class="fa-solid fa-file-excel excel-icon"></i>
 
                                             <div>
                                                 <strong>Relación de ingresos</strong>
                                                 <span>XLSX · 850 KB</span>
                                             </div>
+
                                         </div>
                                     </td>
 
@@ -444,37 +586,57 @@
                                     <td>—</td>
 
                                     <td>
-                                        <span class="status status-warning">
+                                        <span class="status status-pending">
                                             Pendiente
                                         </span>
                                     </td>
 
                                     <td>
                                         <div class="table-actions">
-                                            <button type="button" title="Visualizar">
+
+                                            <button
+                                                type="button"
+                                                title="Visualizar documento"
+                                                aria-label="Visualizar relación de ingresos"
+                                            >
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
 
-                                            <button type="button" title="Descargar">
+                                            <button
+                                                type="button"
+                                                title="Descargar documento"
+                                                aria-label="Descargar relación de ingresos"
+                                            >
                                                 <i class="fa-solid fa-download"></i>
                                             </button>
 
-                                            <button type="button" title="Más opciones">
+                                            <button
+                                                type="button"
+                                                title="Más opciones"
+                                                aria-label="Más opciones para relación de ingresos"
+                                            >
                                                 <i class="fa-solid fa-ellipsis"></i>
                                             </button>
+
                                         </div>
                                     </td>
+
                                 </tr>
 
+
+                                <!-- DOCUMENTO 4 -->
                                 <tr>
+
                                     <td>
                                         <div class="document-name">
+
                                             <i class="fa-solid fa-file-pdf pdf-icon"></i>
 
                                             <div>
                                                 <strong>Soporte de retención</strong>
                                                 <span>PDF · 1.2 MB</span>
                                             </div>
+
                                         </div>
                                     </td>
 
@@ -485,26 +647,41 @@
                                     <td>20/11/2026</td>
 
                                     <td>
-                                        <span class="status status-success">
+                                        <span class="status status-completed">
                                             Recibido
                                         </span>
                                     </td>
 
                                     <td>
                                         <div class="table-actions">
-                                            <button type="button" title="Visualizar">
+
+                                            <button
+                                                type="button"
+                                                title="Visualizar documento"
+                                                aria-label="Visualizar soporte de retención"
+                                            >
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
 
-                                            <button type="button" title="Descargar">
+                                            <button
+                                                type="button"
+                                                title="Descargar documento"
+                                                aria-label="Descargar soporte de retención"
+                                            >
                                                 <i class="fa-solid fa-download"></i>
                                             </button>
 
-                                            <button type="button" title="Más opciones">
+                                            <button
+                                                type="button"
+                                                title="Más opciones"
+                                                aria-label="Más opciones para soporte de retención"
+                                            >
                                                 <i class="fa-solid fa-ellipsis"></i>
                                             </button>
+
                                         </div>
                                     </td>
+
                                 </tr>
 
                             </tbody>
@@ -513,29 +690,40 @@
 
                     </div>
 
+
                     <!-- PAGINACIÓN -->
-                    <div class="table-pagination">
+                    <div class="table-footer">
 
                         <span>
                             Mostrando 1–4 de 1.248 documentos
                         </span>
 
-                        <div class="pagination-actions">
+                        <div class="pagination">
 
-                            <button type="button" disabled>
+                            <button
+                                type="button"
+                                aria-label="Página anterior"
+                                disabled
+                            >
                                 <i class="fa-solid fa-chevron-left"></i>
-                                Anterior
                             </button>
 
-                            <button type="button" class="current-page">
+                            <button
+                                type="button"
+                                class="pagination-active"
+                                aria-current="page"
+                            >
                                 1
                             </button>
 
                             <button type="button">2</button>
+
                             <button type="button">3</button>
 
-                            <button type="button">
-                                Siguiente
+                            <button
+                                type="button"
+                                aria-label="Página siguiente"
+                            >
                                 <i class="fa-solid fa-chevron-right"></i>
                             </button>
 
@@ -545,13 +733,21 @@
 
                 </section>
 
-            </div>
 
-            <!-- PIE DE PÁGINA -->
-            <footer class="content-footer">
-                <span>NOVERIS · Gestión contable</span>
-                <span>Panel administrativo</span>
-            </footer>
+                <!-- PIE DEL MÓDULO -->
+                <footer class="content-footer">
+
+                    <span>
+                        NOVERIS · Gestión contable y financiera
+                    </span>
+
+                    <span>
+                        Panel administrativo
+                    </span>
+
+                </footer>
+
+            </div>
 
         </main>
 

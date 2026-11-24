@@ -1,822 +1,272 @@
 
 /* ==========================================================
-   NOVERIS - CALENDARIO TRIBUTARIO
+   NOVERIS
+   MÓDULO: CALENDARIO TRIBUTARIO
    Hoja de estilos independiente
 ========================================================== */
 
+
 /* ==========================================================
-   1. VARIABLES E IDENTIDAD VISUAL
+   1. IDENTIDAD VISUAL DEL MÓDULO
 ========================================================== */
 
 :root {
-    --navy: #17324D;
-    --green: #2E6B57;
-    --gold: #B8892F;
+    --calendar-navy: #17324D;
+    --calendar-green: #2E6B57;
+    --calendar-gold: #B8892F;
 
-    --text: #263746;
-    --text-secondary: #71808D;
+    --calendar-text: #263746;
+    --calendar-muted: #5F7078;
 
-    --background: #F5F7F8;
-    --white: #FFFFFF;
+    --calendar-background: #F5F7F8;
+    --calendar-surface: #FFFFFF;
+    --calendar-border: #DCE3E5;
 
-    --border: #E4E9ED;
-    --border-light: #EDF0F2;
+    --status-success: #246348;
+    --status-info: #285F7C;
+    --status-warning: #76550C;
+    --status-danger: #913C3C;
 
-    --green-soft: #E9F3EE;
-    --gold-soft: #F8F1E3;
-    --red-soft: #FBEDEC;
-    --blue-soft: #EAF0F6;
+    --status-success-bg: #EAF2ED;
+    --status-info-bg: #EAF1F5;
+    --status-warning-bg: #F7F1E3;
+    --status-danger-bg: #F6EAEA;
 
-    --red: #C45B56;
-
-    --shadow: 0 3px 14px rgba(23, 50, 77, 0.045);
+    --calendar-radius: 12px;
+    --calendar-shadow: 0 3px 12px rgba(23, 50, 77, 0.05);
 }
 
 
 /* ==========================================================
-   2. CONFIGURACIÓN GENERAL
-========================================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    min-width: 1100px;
-    min-height: 650px;
-
-    height: 100vh;
-
-    overflow: hidden;
-
-    background: var(--background);
-
-    color: var(--text);
-
-    font-family: "Segoe UI", Arial, sans-serif;
-    font-size: 13px;
-}
-
-button,
-input,
-select {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-svg {
-    width: 18px;
-    height: 18px;
-    display: block;
-}
-
-
-/* ==========================================================
-   3. DISTRIBUCIÓN PRINCIPAL
-========================================================== */
-
-.dashboard-layout {
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-
-    overflow: hidden;
-}
-
-
-/* ==========================================================
-   4. CONTROL DEL MENÚ LATERAL
-   Funciona sin JavaScript mediante checkbox
-========================================================== */
-
-.sidebar-toggle-checkbox {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.sidebar {
-    position: relative;
-
-    width: 270px;
-    min-width: 270px;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 0;
-
-    overflow: visible;
-
-    background: var(--navy);
-    color: var(--white);
-
-    transition:
-        width 0.28s ease,
-        min-width 0.28s ease;
-}
-
-.sidebar-content {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 25px 19px 18px;
-
-    overflow: hidden;
-}
-
-.sidebar-toggle {
-    position: absolute;
-
-    top: 50%;
-    right: -14px;
-
-    transform: translateY(-50%);
-
-    z-index: 1000;
-
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background: var(--white);
-
-    border: 1px solid var(--border);
-    border-radius: 50%;
-
-    color: var(--navy);
-
-    box-shadow: 0 2px 8px rgba(23, 50, 77, 0.13);
-
-    cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.sidebar-toggle:hover {
-    background: var(--green);
-    border-color: var(--green);
-    color: var(--white);
-
-    box-shadow: 0 3px 10px rgba(46, 107, 87, 0.22);
-}
-
-.toggle-icon {
-    width: 16px;
-    height: 16px;
-}
-
-.toggle-open {
-    display: none;
-}
-
-.sidebar-toggle-checkbox:focus-visible + .sidebar {
-    outline: 2px solid var(--gold);
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar {
-    width: 76px;
-    min-width: 76px;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-content {
-    padding: 25px 12px 18px;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .brand {
-    justify-content: center;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .brand-information,
-.sidebar-toggle-checkbox:checked ~ .sidebar .section-label,
-.sidebar-toggle-checkbox:checked ~ .sidebar .nav-item span,
-.sidebar-toggle-checkbox:checked ~ .sidebar .profile-information,
-.sidebar-toggle-checkbox:checked ~ .sidebar .logout-link {
-    display: none;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .navigation {
-    align-items: center;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .nav-item {
-    justify-content: center;
-    width: 46px;
-    padding: 0;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .nav-icon {
-    margin: 0;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-footer {
-    justify-content: center;
-    padding: 13px 0 0;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .toggle-close {
-    display: none;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .toggle-open {
-    display: block;
-}
-
-.sidebar-toggle-checkbox:checked ~ .sidebar .sidebar-toggle {
-    right: -14px;
-}
-
-
-/* ==========================================================
-   5. IDENTIDAD DEL MENÚ
-========================================================== */
-
-.brand {
-    min-height: 57px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 0 5px;
-    margin-bottom: 39px;
-}
-
-.brand-symbol {
-    width: 39px;
-    height: 39px;
-    min-width: 39px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 11px;
-
-    background: rgba(255, 255, 255, 0.1);
-
-    color: var(--white);
-
-    font-size: 22px;
-    font-weight: 700;
-}
-
-.brand-information {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-
-    white-space: nowrap;
-}
-
-.brand-name {
-    color: var(--white);
-
-    font-size: 17px;
-    font-weight: 750;
-    letter-spacing: 1.5px;
-}
-
-.brand-description {
-    color: rgba(255, 255, 255, 0.55);
-
-    font-size: 10px;
-    letter-spacing: 0.4px;
-}
-
-
-/* ==========================================================
-   6. NAVEGACIÓN LATERAL
-========================================================== */
-
-.sidebar-section {
-    margin-bottom: 29px;
-}
-
-.section-label {
-    display: block;
-
-    padding-left: 9px;
-    margin-bottom: 13px;
-
-    color: rgba(255, 255, 255, 0.43);
-
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.1px;
-
-    white-space: nowrap;
-}
-
-.navigation {
-    display: flex;
-    flex-direction: column;
-
-    gap: 5px;
-}
-
-.nav-item {
-    min-height: 43px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 0 11px;
-
-    border-radius: 7px;
-
-    color: rgba(255, 255, 255, 0.68);
-
-    font-size: 12px;
-    font-weight: 500;
-
-    white-space: nowrap;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease;
-}
-
-.nav-item:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--white);
-}
-
-.nav-item.active {
-    background: rgba(255, 255, 255, 0.13);
-    color: var(--white);
-
-    font-weight: 650;
-}
-
-.nav-item.active::before {
-    position: absolute;
-
-    left: 0;
-
-    width: 3px;
-    height: 25px;
-
-    content: "";
-
-    border-radius: 0 3px 3px 0;
-
-    background: var(--gold);
-}
-
-.nav-icon {
-    width: 19px;
-    height: 19px;
-    min-width: 19px;
-}
-
-.secondary-navigation {
-    margin-top: 2px;
-}
-
-
-/* ==========================================================
-   7. PERFIL DEL MENÚ LATERAL
-========================================================== */
-
-.sidebar-footer {
-    min-height: 60px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-top: auto;
-    padding: 13px 3px 0;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.profile-avatar {
-    width: 34px;
-    height: 34px;
-    min-width: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.15);
-
-    color: var(--white);
-
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.profile-information {
-    display: flex;
-    flex-direction: column;
-
-    gap: 4px;
-
-    min-width: 0;
-    white-space: nowrap;
-}
-
-.profile-name {
-    color: var(--white);
-
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.profile-role {
-    color: rgba(255, 255, 255, 0.5);
-
-    font-size: 9px;
-}
-
-.logout-link {
-    margin-left: auto;
-
-    padding: 5px;
-
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.logout-link:hover {
-    color: var(--white);
-}
-
-
-/* ==========================================================
-   8. CONTENIDO PRINCIPAL Y BARRA SUPERIOR
-========================================================== */
-
-.main-content {
-    flex: 1;
-    min-width: 0;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    overflow: hidden;
-
-    background: var(--background);
-}
-
-.topbar {
-    height: 67px;
-    min-height: 67px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 34px;
-
-    background: var(--white);
-
-    border-bottom: 1px solid var(--border-light);
-}
-
-.breadcrumb {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    color: var(--text-secondary);
-
-    font-size: 11px;
-}
-
-.breadcrumb-separator {
-    color: #C4CCD2;
-}
-
-.breadcrumb strong {
-    color: var(--text);
-    font-weight: 650;
-}
-
-.topbar-actions {
-    display: flex;
-    align-items: center;
-
-    gap: 21px;
-}
-
-.current-context {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--text-secondary);
-    font-size: 10px;
-}
-
-.context-indicator {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: var(--green);
-}
-
-.topbar-divider {
-    width: 1px;
-    height: 27px;
-
-    background: var(--border);
-}
-
-.topbar-user {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-}
-
-.topbar-avatar {
-    width: 34px;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: var(--blue-soft);
-
-    color: var(--navy);
-
-    font-size: 10px;
-    font-weight: 700;
-}
-
-.topbar-user-info {
-    display: flex;
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-.topbar-user-info span {
-    color: var(--text);
-    font-size: 11px;
-    font-weight: 650;
-}
-
-.topbar-user-info small {
-    color: var(--text-secondary);
-    font-size: 9px;
-}
-
-
-/* ==========================================================
-   9. ÁREA DE CONTENIDO
+   2. CONTENIDO GENERAL
 ========================================================== */
 
 .content-wrapper {
-    flex: 1;
-    min-height: 0;
-
-    padding: 26px 32px 18px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    scrollbar-width: thin;
-    scrollbar-color: #CBD3D9 transparent;
+    width: 100%;
+    min-width: 0;
 }
+
+.content-wrapper h2,
+.content-wrapper h3,
+.content-wrapper p {
+    margin-top: 0;
+}
+
+.content-wrapper button,
+.content-wrapper input,
+.content-wrapper select {
+    font: inherit;
+}
+
+.content-wrapper button {
+    cursor: pointer;
+}
+
+.content-wrapper button:focus-visible,
+.content-wrapper a:focus-visible,
+.content-wrapper input:focus-visible,
+.content-wrapper select:focus-visible {
+    outline: 3px solid rgba(46, 107, 87, 0.35);
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   3. ENCABEZADO DEL MÓDULO
+========================================================== */
 
 .page-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 28px;
 
-    gap: 20px;
-
-    margin-bottom: 22px;
+    margin-bottom: 28px;
 }
 
-.eyebrow,
-.panel-overline {
-    display: block;
+.page-heading h2 {
+    margin-bottom: 9px;
 
-    margin-bottom: 7px;
-
-    color: var(--green);
-
-    font-size: 9px;
-    font-weight: 750;
-    letter-spacing: 1.1px;
-}
-
-.page-heading h1 {
-    color: var(--navy);
-
-    font-size: 25px;
+    color: var(--calendar-navy);
+    font-size: 30px;
     font-weight: 700;
-    letter-spacing: -0.6px;
+    line-height: 1.25;
 }
 
 .page-heading p {
-    margin-top: 7px;
+    max-width: 650px;
+    margin-bottom: 0;
 
-    color: var(--text-secondary);
-
-    font-size: 11px;
-    line-height: 1.5;
+    color: var(--calendar-muted);
+    font-size: 15px;
+    line-height: 1.6;
 }
 
-.secondary-button,
-.export-button {
-    min-height: 38px;
+.page-heading .eyebrow {
+    display: block;
+    margin-bottom: 8px;
 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    padding: 0 14px;
-
-    border: 1px solid var(--border);
-    border-radius: 6px;
-
-    background: var(--white);
-
-    color: var(--text);
-
-    font-size: 10px;
-    font-weight: 650;
-
-    white-space: nowrap;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        color 0.2s ease;
-}
-
-.secondary-button svg,
-.export-button svg {
-    width: 16px;
-    height: 16px;
-}
-
-.secondary-button:hover,
-.export-button:hover {
-    border-color: var(--green);
-    color: var(--green);
+    color: var(--calendar-green);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
 }
 
 
 /* ==========================================================
-   10. TARJETAS DE RESUMEN
+   4. BOTÓN PRINCIPAL
+========================================================== */
+
+.page-heading .primary-button,
+.filter-toolbar .primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 11px;
+
+    min-height: 48px;
+    padding: 12px 19px;
+
+    border: 1px solid var(--calendar-green);
+    border-radius: 8px;
+
+    background: var(--calendar-green);
+    color: #FFFFFF;
+
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.page-heading .primary-button:hover,
+.filter-toolbar .primary-button:hover {
+    background: #245743;
+    box-shadow: 0 4px 10px rgba(46, 107, 87, 0.16);
+}
+
+.page-heading .primary-button i,
+.filter-toolbar .primary-button i {
+    font-size: 17px;
+}
+
+
+/* ==========================================================
+   5. TARJETAS DE RESUMEN
 ========================================================== */
 
 .summary-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
 
-    gap: 15px;
-
-    margin-bottom: 21px;
+    margin-bottom: 26px;
 }
 
 .summary-card {
-    min-height: 101px;
-
     display: flex;
     align-items: center;
+    gap: 17px;
 
-    gap: 13px;
+    min-width: 0;
+    min-height: 126px;
+    padding: 21px;
 
-    padding: 16px 17px;
+    border: 1px solid var(--calendar-border);
+    border-radius: var(--calendar-radius);
 
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
+    background: var(--calendar-surface);
+    box-shadow: var(--calendar-shadow);
 
-    background: var(--white);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
-    box-shadow: var(--shadow);
+.summary-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(23, 50, 77, 0.08);
 }
 
 .summary-icon {
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 9px;
-}
+    flex: 0 0 51px;
+    width: 51px;
+    height: 51px;
 
-.summary-icon svg {
-    width: 20px;
-    height: 20px;
+    border-radius: 12px;
+
+    font-size: 21px;
 }
 
 .navy-icon {
-    background: var(--blue-soft);
-    color: var(--navy);
+    background: #EAF0F5;
+    color: var(--calendar-navy);
 }
 
 .gold-icon {
-    background: var(--gold-soft);
-    color: var(--gold);
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
 }
 
 .red-icon {
-    background: var(--red-soft);
-    color: var(--red);
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
 }
 
 .green-icon {
-    background: var(--green-soft);
-    color: var(--green);
+    background: var(--status-success-bg);
+    color: var(--status-success);
 }
 
 .summary-information {
-    min-width: 0;
-
     display: flex;
     flex-direction: column;
+    gap: 4px;
 
-    gap: 3px;
+    min-width: 0;
 }
 
 .summary-information > span {
-    color: var(--text-secondary);
-
-    font-size: 10px;
-    font-weight: 550;
+    color: var(--calendar-muted);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
 }
 
 .summary-information strong {
-    color: var(--navy);
-
-    font-size: 23px;
-    font-weight: 750;
-    line-height: 1.1;
+    color: var(--calendar-navy);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .summary-information small {
-    color: #929DA6;
-    font-size: 9px;
+    color: var(--calendar-muted);
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 
 /* ==========================================================
-   11. ÁREA PRINCIPAL DEL CALENDARIO
+   6. DISTRIBUCIÓN DEL CALENDARIO
 ========================================================== */
 
 .calendar-section {
     display: grid;
-    grid-template-columns: minmax(0, 1.8fr) minmax(290px, 0.85fr);
-
-    gap: 17px;
+    grid-template-columns: minmax(0, 1.8fr) minmax(290px, 0.9fr);
+    gap: 22px;
 
     align-items: stretch;
-
-    margin-bottom: 21px;
+    margin-bottom: 26px;
 }
 
 .calendar-panel,
@@ -824,264 +274,261 @@ svg {
 .obligations-panel {
     min-width: 0;
 
-    border: 1px solid var(--border-light);
-    border-radius: 8px;
+    border: 1px solid var(--calendar-border);
+    border-radius: var(--calendar-radius);
 
-    background: var(--white);
-
-    box-shadow: var(--shadow);
+    background: var(--calendar-surface);
+    box-shadow: var(--calendar-shadow);
 }
 
 .calendar-panel {
-    padding: 20px;
+    padding: 24px;
 }
 
-.panel-heading {
+
+/* ==========================================================
+   7. ENCABEZADOS DE PANELES
+========================================================== */
+
+.panel-heading,
+.upcoming-heading,
+.obligations-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    gap: 12px;
-
-    padding-bottom: 16px;
-
-    border-bottom: 1px solid var(--border-light);
+    gap: 15px;
 }
 
-.panel-heading h2,
-.upcoming-heading h2,
-.obligations-heading h2 {
-    color: var(--navy);
-
-    font-size: 15px;
-    font-weight: 700;
+.panel-heading {
+    margin-bottom: 21px;
 }
 
 .panel-overline {
-    margin-bottom: 5px;
+    display: block;
+    margin-bottom: 7px;
 
-    font-size: 8px;
+    color: var(--calendar-green);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+}
+
+.panel-heading h3,
+.upcoming-heading h3,
+.obligations-heading h3 {
+    margin-bottom: 0;
+
+    color: var(--calendar-navy);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.35;
 }
 
 .period-badge {
-    padding: 6px 9px;
+    padding: 8px 12px;
 
-    border: 1px solid #E7EDF1;
-    border-radius: 5px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
 
-    background: #F7F9FA;
+    background: #F8FAFA;
+    color: var(--calendar-navy);
 
-    color: var(--text-secondary);
-
-    font-size: 9px;
-    font-weight: 650;
-
+    font-size: 13px;
+    font-weight: 600;
     white-space: nowrap;
 }
 
 
 /* ==========================================================
-   12. CONTROLES DEL CALENDARIO
+   8. CONTROLES DEL CALENDARIO
 ========================================================== */
 
 .calendar-toolbar {
-    min-height: 57px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 
-    gap: 10px;
+    margin-bottom: 18px;
 }
 
 .month-navigation {
     display: flex;
     align-items: center;
-
-    gap: 13px;
+    gap: 15px;
 }
 
-.month-navigation h3 {
-    min-width: 140px;
+.month-navigation strong {
+    min-width: 145px;
 
-    color: var(--text);
-
-    font-size: 13px;
+    color: var(--calendar-text);
+    font-size: 16px;
     font-weight: 700;
-
     text-align: center;
 }
 
-.month-navigation h3 span {
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.month-arrow {
-    width: 27px;
-    height: 27px;
-
-    display: flex;
+.month-arrow,
+.today-button {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid var(--border);
-    border-radius: 5px;
+    min-width: 37px;
+    min-height: 37px;
 
-    background: var(--white);
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
 
-    color: var(--text-secondary);
+    background: #FFFFFF;
+    color: var(--calendar-navy);
 
-    transition: 0.2s ease;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
 }
 
-.month-arrow svg {
-    width: 14px;
-    height: 14px;
+.month-arrow:hover,
+.today-button:hover {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
 }
 
-.month-arrow:hover {
-    border-color: var(--green);
-    color: var(--green);
+.month-arrow {
+    font-size: 13px;
 }
 
 .today-button {
-    padding: 6px 11px;
+    padding: 8px 15px;
 
-    border: 1px solid #DDE6E1;
-    border-radius: 5px;
-
-    background: var(--green-soft);
-
-    color: var(--green);
-
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.today-button:hover {
-    background: #DCECE4;
+    color: var(--calendar-green);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 
 /* ==========================================================
-   13. LEYENDA
+   9. LEYENDA DEL CALENDARIO
 ========================================================== */
 
 .calendar-legend {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    gap: 13px 20px;
 
-    gap: 13px;
+    padding: 15px 0;
+    margin-bottom: 14px;
 
-    padding: 0 0 13px;
-
-    border-bottom: 1px solid var(--border-light);
+    border-top: 1px solid var(--calendar-border);
+    border-bottom: 1px solid var(--calendar-border);
 }
 
 .legend-item {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    gap: 7px;
 
-    gap: 5px;
-
-    color: var(--text-secondary);
-
-    font-size: 9px;
-    white-space: nowrap;
+    color: var(--calendar-muted);
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 .legend-dot {
-    width: 7px;
-    height: 7px;
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
 
     border-radius: 50%;
 }
 
 .official-dot {
-    background: var(--navy);
+    background: #285F7C;
 }
 
 .internal-dot {
-    background: var(--gold);
+    background: #B8892F;
 }
 
 .completed-dot {
-    background: var(--green);
+    background: #246348;
 }
 
 .overdue-dot {
-    background: var(--red);
+    background: #913C3C;
 }
 
 
 /* ==========================================================
-   14. GRILLA DEL CALENDARIO
+   10. CUADRÍCULA DEL CALENDARIO
 ========================================================== */
 
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
 
-    padding-top: 9px;
+    width: 100%;
+    border-top: 1px solid var(--calendar-border);
+    border-left: 1px solid var(--calendar-border);
 }
 
 .weekday {
-    min-height: 29px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    color: #8B98A2;
+    min-height: 42px;
+    padding: 8px 3px;
 
-    font-size: 8px;
-    font-weight: 750;
-    letter-spacing: 0.4px;
+    border-right: 1px solid var(--calendar-border);
+    border-bottom: 1px solid var(--calendar-border);
+
+    background: #F6F8F9;
+    color: var(--calendar-muted);
+
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
 }
 
 .day-cell {
     position: relative;
 
-    min-width: 0;
-    min-height: 65px;
-
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    gap: 7px;
 
-    gap: 6px;
+    min-width: 0;
+    min-height: 91px;
+    padding: 9px 8px;
 
-    padding: 7px 6px;
+    border-right: 1px solid var(--calendar-border);
+    border-bottom: 1px solid var(--calendar-border);
 
-    border-top: 1px solid var(--border-light);
-    border-right: 1px solid var(--border-light);
-
-    background: var(--white);
-}
-
-.day-cell:nth-child(7n + 1) {
-    border-left: 1px solid var(--border-light);
-}
-
-.day-cell:nth-last-child(-n + 7) {
-    border-bottom: 1px solid var(--border-light);
+    background: #FFFFFF;
 }
 
 .day-number {
-    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size: 10px;
+    min-width: 25px;
+    min-height: 25px;
+
+    border-radius: 50%;
+
+    color: var(--calendar-text);
+    font-size: 13px;
     font-weight: 600;
 }
 
 .other-month {
-    background: #FAFBFC;
+    background: #F9FAFA;
 }
 
 .other-month .day-number {
-    color: #B8C0C6;
+    color: #9AA7AC;
 }
 
 .current-day {
@@ -1089,1412 +536,877 @@ svg {
 }
 
 .current-day .day-number {
-    width: 20px;
-    height: 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-top: -3px;
-    margin-left: -3px;
-
-    border-radius: 50%;
-
-    background: var(--green);
-
-    color: var(--white);
-
-    font-weight: 700;
+    background: var(--calendar-green);
+    color: #FFFFFF;
 }
 
 .today-label {
     position: absolute;
+    top: 11px;
+    right: 7px;
 
-    top: 9px;
-    right: 5px;
-
-    color: var(--green);
-
-    font-size: 7px;
+    color: var(--calendar-green);
+    font-size: 9px;
     font-weight: 800;
-    letter-spacing: 0.3px;
-}
-
-.calendar-event {
-    width: 100%;
-
-    display: block;
-
-    padding: 4px 4px;
-
-    border-radius: 3px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    font-size: 8px;
-    font-weight: 650;
-}
-
-.event-official {
-    background: var(--blue-soft);
-    color: var(--navy);
-    border-left: 2px solid var(--navy);
-}
-
-.event-internal {
-    background: var(--gold-soft);
-    color: #8D671D;
-    border-left: 2px solid var(--gold);
-}
-
-.event-completed {
-    background: var(--green-soft);
-    color: var(--green);
-    border-left: 2px solid var(--green);
-}
-
-.event-overdue {
-    background: var(--red-soft);
-    color: var(--red);
-    border-left: 2px solid var(--red);
+    letter-spacing: 0.4px;
 }
 
 
 /* ==========================================================
-   15. NOTA INFORMATIVA DEL CALENDARIO
+   11. EVENTOS DEL CALENDARIO
+========================================================== */
+
+.calendar-event {
+    display: block;
+
+    width: 100%;
+    overflow: hidden;
+
+    padding: 5px 6px;
+
+    border-radius: 4px;
+
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1.35;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.event-official {
+    border-left: 3px solid #285F7C;
+
+    background: var(--status-info-bg);
+    color: var(--status-info);
+}
+
+.event-internal {
+    border-left: 3px solid var(--calendar-gold);
+
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
+}
+
+.event-completed {
+    border-left: 3px solid var(--status-success);
+
+    background: var(--status-success-bg);
+    color: var(--status-success);
+}
+
+.event-overdue {
+    border-left: 3px solid var(--status-danger);
+
+    background: var(--status-danger-bg);
+    color: var(--status-danger);
+}
+
+
+/* ==========================================================
+   12. NOTA INFORMATIVA DEL CALENDARIO
 ========================================================== */
 
 .calendar-note {
     display: flex;
     align-items: flex-start;
+    gap: 10px;
 
-    gap: 8px;
+    margin-top: 18px;
+    padding: 12px 14px;
 
-    margin-top: 14px;
-    padding: 10px 11px;
+    border: 1px solid #DCE7EB;
+    border-radius: 7px;
 
-    border: 1px solid #E8EDF1;
-    border-radius: 5px;
+    background: #F3F7F9;
+    color: var(--calendar-muted);
 
-    background: #F8FAFB;
-
-    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.6;
 }
 
-.calendar-note svg {
-    width: 15px;
-    height: 15px;
-    min-width: 15px;
+.calendar-note i {
+    margin-top: 2px;
 
-    margin-top: 1px;
-
-    color: var(--gold);
-}
-
-.calendar-note p {
-    font-size: 9px;
-    line-height: 1.5;
+    color: var(--status-info);
+    font-size: 15px;
 }
 
 
 /* ==========================================================
-   16. PRÓXIMOS VENCIMIENTOS
+   13. PRÓXIMOS VENCIMIENTOS
 ========================================================== */
 
 .upcoming-panel {
     display: flex;
     flex-direction: column;
 
-    padding: 20px 17px;
+    padding: 24px;
 }
 
 .upcoming-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 10px;
-
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid var(--border-light);
-}
-
-.upcoming-heading h2 {
-    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .upcoming-count {
-    width: 28px;
-    height: 28px;
-
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 6px;
+    min-width: 35px;
+    height: 35px;
+    padding: 0 8px;
 
-    background: var(--blue-soft);
+    border-radius: 8px;
 
-    color: var(--navy);
+    background: var(--status-warning-bg);
+    color: var(--status-warning);
 
-    font-size: 10px;
-    font-weight: 750;
+    font-size: 14px;
+    font-weight: 700;
 }
 
 .upcoming-list {
     display: flex;
     flex-direction: column;
+    gap: 0;
 }
 
 .upcoming-item {
-    min-width: 0;
-
     display: flex;
     align-items: center;
+    gap: 13px;
 
-    gap: 10px;
+    padding: 16px 0;
 
-    padding: 15px 0;
+    border-bottom: 1px solid var(--calendar-border);
+}
 
-    border-bottom: 1px solid var(--border-light);
+.upcoming-item:first-child {
+    padding-top: 0;
 }
 
 .date-box {
-    width: 39px;
-    min-width: 39px;
-    height: 43px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    gap: 2px;
+    flex: 0 0 52px;
+    width: 52px;
+    min-height: 57px;
 
-    border: 1px solid var(--border);
-    border-radius: 5px;
+    border: 1px solid var(--calendar-border);
+    border-radius: 8px;
 
-    background: #FAFBFC;
+    background: #F7F9FA;
 }
 
 .date-box strong {
-    color: var(--navy);
-
-    font-size: 15px;
-    font-weight: 750;
-    line-height: 1;
+    color: var(--calendar-navy);
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .date-box span {
-    color: var(--text-secondary);
+    margin-top: 2px;
 
-    font-size: 8px;
+    color: var(--calendar-muted);
+    font-size: 10px;
     font-weight: 700;
 }
 
 .upcoming-information {
-    flex: 1;
-    min-width: 0;
-
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
 
-    gap: 4px;
+    min-width: 0;
 }
 
 .upcoming-information strong {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    color: var(--text);
-
-    font-size: 10px;
+    color: var(--calendar-text);
+    font-size: 13px;
     font-weight: 700;
+    line-height: 1.4;
 }
 
-.upcoming-information span {
-    color: var(--text-secondary);
-    font-size: 9px;
+.upcoming-information > span:not(.status) {
+    color: var(--calendar-muted);
+    font-size: 11px;
+    line-height: 1.4;
 }
 
-.upcoming-information small {
-    color: #9AA4AC;
-    font-size: 8px;
-}
+
+/* ==========================================================
+   14. ESTADOS DE LAS OBLIGACIONES
+========================================================== */
 
 .status {
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    padding: 5px 7px;
+    width: fit-content;
+    padding: 5px 9px;
 
-    border-radius: 4px;
+    border-radius: 5px;
 
-    font-size: 8px;
+    font-size: 11px;
     font-weight: 700;
-
+    line-height: 1.3;
     white-space: nowrap;
 }
 
-.status-pending {
-    background: var(--gold-soft);
-    color: #987022;
-}
-
-.status-progress {
-    background: var(--blue-soft);
-    color: #42627F;
-}
-
-.status-completed {
-    background: var(--green-soft);
-    color: var(--green);
-}
-
-.status-overdue {
-    background: var(--red-soft);
-    color: var(--red);
-}
-
-.view-all-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 8px;
-
-    margin-top: auto;
-    padding-top: 15px;
-
-    color: var(--green);
-
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.view-all-link svg {
-    width: 15px;
-    height: 15px;
-
-    transition: transform 0.2s ease;
-}
-
-.view-all-link:hover svg {
-    transform: translateX(3px);
-}
-
-
-/* ==========================================================
-   17. PANEL DE OBLIGACIONES
-========================================================== */
-
-.obligations-panel {
-    padding: 20px;
-
-    margin-bottom: 20px;
-}
-
-.obligations-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 18px;
-}
-
-.obligations-heading h2 {
-    font-size: 15px;
-}
-
-.obligations-heading p {
-    margin-top: 5px;
-
-    color: var(--text-secondary);
-
-    font-size: 10px;
-}
-
-.export-button {
-    min-height: 34px;
-}
-
-
-/* ==========================================================
-   18. FILTROS Y BÚSQUEDA
-========================================================== */
-
-.filter-toolbar {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    margin-bottom: 16px;
-}
-
-.search-box {
-    flex: 1;
-    min-width: 180px;
-    height: 36px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 0 10px;
-
-    border: 1px solid var(--border);
-    border-radius: 5px;
-
-    background: var(--white);
-}
-
-.search-box svg {
-    width: 15px;
-    height: 15px;
-    min-width: 15px;
-
-    color: #98A3AC;
-}
-
-.search-box input {
-    width: 100%;
-    min-width: 0;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: var(--text);
-
-    font-size: 10px;
-}
-
-.search-box input::placeholder {
-    color: #A4ADB5;
-}
-
-.filter-toolbar select {
-    width: 170px;
-    height: 36px;
-
-    padding: 0 10px;
-
-    border: 1px solid var(--border);
-    border-radius: 5px;
-
-    outline: none;
-
-    background: var(--white);
-
-    color: var(--text-secondary);
-
-    font-size: 9px;
-}
-
-.filter-toolbar select:focus,
-.search-box:focus-within {
-    border-color: var(--green);
-}
-
-.filter-button {
-    height: 36px;
-
-    padding: 0 16px;
-
-    border: 1px solid var(--green);
-    border-radius: 5px;
-
-    background: var(--green);
-
-    color: var(--white);
-
-    font-size: 10px;
-    font-weight: 650;
-
-    transition: background 0.2s ease;
-}
-
-.filter-button:hover {
-    background: #245844;
-}
-
-
-/* ==========================================================
-   19. TABLA DE OBLIGACIONES
-========================================================== */
-
-.table-container {
-    width: 100%;
-
-    overflow-x: auto;
-
-    border: 1px solid var(--border-light);
-    border-radius: 5px;
-}
-
-table {
-    width: 100%;
-
-    border-collapse: collapse;
-
-    white-space: nowrap;
-}
-
-thead {
-    background: #F7F9FA;
-}
-
-th {
-    height: 39px;
-
-    padding: 0 12px;
-
-    color: #87939D;
-
-    font-size: 8px;
-    font-weight: 750;
-    letter-spacing: 0.45px;
-
-    text-align: left;
-}
-
-td {
-    height: 58px;
-
-    padding: 8px 12px;
-
-    border-top: 1px solid var(--border-light);
-
-    color: var(--text-secondary);
-
-    font-size: 9px;
-}
-
-tbody tr {
-    transition: background 0.15s ease;
-}
-
-tbody tr:hover {
-    background: #FAFBFC;
-}
-
-.obligation-name {
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-}
-
-.obligation-name > div {
-    display: flex;
-    flex-direction: column;
-
-    gap: 4px;
-}
-
-.obligation-name strong {
-    color: var(--text);
-
-    font-size: 10px;
-    font-weight: 700;
-}
-
-.obligation-name small {
-    color: #9AA4AC;
-    font-size: 8px;
-}
-
-.table-indicator {
-    width: 7px;
-    height: 7px;
-    min-width: 7px;
-
-    border-radius: 50%;
-}
-
-.official-indicator {
-    background: var(--navy);
-}
-
-.internal-indicator {
-    background: var(--gold);
-}
-
-.completed-indicator {
-    background: var(--green);
-}
-
-.type-label {
-    display: inline-flex;
-
-    padding: 5px 7px;
-
-    border-radius: 4px;
-
-    font-size: 8px;
-    font-weight: 700;
-}
-
-.official-type {
-    background: var(--blue-soft);
-    color: var(--navy);
-}
-
-.internal-type {
-    background: var(--gold-soft);
-    color: #987022;
-}
-
-.days-remaining {
-    color: var(--text);
-    font-weight: 650;
-}
-
-.days-completed {
-    color: var(--green);
-    font-weight: 650;
-}
-
-.action-button {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    background: transparent;
-
-    color: var(--text-secondary);
-
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.action-button:hover {
-    border-color: var(--border);
-    background: var(--background);
-    color: var(--navy);
-}
-
-
-/* ==========================================================
-   20. PAGINACIÓN
-========================================================== */
-
-.table-footer {
-    min-height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 10px;
-}
-
-.table-footer > span {
-    color: var(--text-secondary);
-    font-size: 9px;
-}
-
-.table-footer strong {
-    color: var(--text);
-}
-
-.pagination {
-    display: flex;
-    align-items: center;
-
-    gap: 4px;
-}
-
-.pagination button {
-    width: 27px;
-    height: 27px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid var(--border);
-    border-radius: 4px;
-
-    background: var(--white);
-
-    color: var(--text-secondary);
-
-    font-size: 10px;
-}
-
-.pagination button:hover:not(:disabled) {
-    border-color: var(--green);
-    color: var(--green);
-}
-
-.pagination button:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-.pagination .pagination-active {
-    border-color: var(--green);
-
-    background: var(--green);
-
-    color: var(--white);
-}
-
-
-/* ==========================================================
-   21. PIE DE PÁGINA
-========================================================== */
-
-.content-footer {
-    min-height: 25px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 12px;
-
-    color: #9AA4AC;
-
-    font-size: 9px;
-}
-
-
-/* ==========================================================
-   22. AJUSTES PARA PANTALLAS DE MENOR ALTURA
-========================================================== */
-
-@media (max-height: 800px) {
-
-    .content-wrapper {
-        padding-top: 20px;
-        padding-bottom: 14px;
-    }
-
-    .page-heading {
-        margin-bottom: 16px;
-    }
-
-    .summary-card {
-        min-height: 88px;
-        padding: 12px 14px;
-    }
-
-    .calendar-panel,
-    .upcoming-panel {
-        padding: 15px;
-    }
-
-    .day-cell {
-        min-height: 57px;
-    }
-
-    .upcoming-item {
-        padding: 11px 0;
-    }
-
-    .obligations-panel {
-        padding: 16px;
-    }
-
-    td {
-        height: 51px;
-    }
-}
-
-
-@media (max-height: 700px) {
-
-    .content-wrapper {
-        padding-top: 15px;
-    }
-
-    .page-heading h1 {
-        font-size: 22px;
-    }
-
-    .summary-card {
-        min-height: 78px;
-    }
-
-    .summary-information strong {
-        font-size: 20px;
-    }
-
-    .day-cell {
-        min-height: 48px;
-        padding: 5px;
-        gap: 4px;
-    }
-
-    .calendar-event {
-        padding: 3px;
-        font-size: 7px;
-    }
-
-    .calendar-note {
-        margin-top: 9px;
-        padding: 7px 9px;
-    }
-
-    .upcoming-item {
-        padding: 8px 0;
-    }
-
-    .obligations-panel {
-        padding: 14px;
-    }
-
-    .obligations-heading {
-        margin-bottom: 12px;
-    }
-}
-
-
-/* ==========================================================
-   23. AJUSTES PARA VENTANAS MÁS ESTRECHAS
-========================================================== */
-
-@media (max-width: 1250px) {
-
-    .content-wrapper {
-        padding-right: 22px;
-        padding-left: 22px;
-    }
-
-    .topbar {
-        padding-right: 24px;
-        padding-left: 24px;
-    }
-
-    .calendar-section {
-        grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.9fr);
-        gap: 12px;
-    }
-
-    .calendar-panel {
-        padding: 15px;
-    }
-
-    .summary-grid {
-        gap: 10px;
-    }
-
-    .summary-card {
-        padding: 12px;
-        gap: 9px;
-    }
-
-    .summary-icon {
-        width: 35px;
-        height: 35px;
-        min-width: 35px;
-    }
-
-    .calendar-legend {
-        gap: 8px;
-    }
-
-    .legend-item {
-        font-size: 8px;
-    }
-
-    .filter-toolbar {
-        gap: 7px;
-    }
-
-    .filter-toolbar select {
-        width: 145px;
-    }
-}
-
-
-/* ==========================================================
-   24. ACCESIBILIDAD: MOVIMIENTO REDUCIDO
-========================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
-}
-
-
-
-
-/* ==========================================================
-   25. ACCESIBILIDAD Y LEGIBILIDAD
-   Objetivo de diseño: lectura cómoda y alto contraste
-========================================================== */
-
-/* ----------------------------------------------------------
-   PALETA DE TEXTO CON MAYOR CONTRASTE
----------------------------------------------------------- */
-
-:root {
-    --text: #263746;
-    --text-secondary: #52616D;
-
-    --muted-readable: #626F79;
-
-    --border-light: #E1E6EA;
-}
-
-
-/* ----------------------------------------------------------
-   CONFIGURACIÓN GENERAL
----------------------------------------------------------- */
-
-body {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-button,
-input,
-select {
-    font-size: 14px;
-}
-
-
-/* ----------------------------------------------------------
-   MENÚ LATERAL
----------------------------------------------------------- */
-
-.brand-name {
-    font-size: 19px;
-}
-
-.brand-description {
-    font-size: 12px;
-}
-
-.section-label {
-    font-size: 11px;
-}
-
-.nav-item {
-    font-size: 14px;
-}
-
-.profile-name {
-    font-size: 13px;
-}
-
-.profile-role {
-    font-size: 11px;
-}
-
-
-/* ----------------------------------------------------------
-   BARRA SUPERIOR
----------------------------------------------------------- */
-
-.breadcrumb {
-    font-size: 13px;
-}
-
-.current-context {
-    font-size: 12px;
-}
-
-.topbar-user-info span {
-    font-size: 13px;
-}
-
-.topbar-user-info small {
-    font-size: 11px;
-}
-
-
-/* ----------------------------------------------------------
-   ENCABEZADO PRINCIPAL
----------------------------------------------------------- */
-
-.page-heading h1 {
-    font-size: 30px;
-    line-height: 1.25;
-}
-
-.page-heading p {
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.eyebrow,
-.panel-overline {
-    font-size: 11px;
-    letter-spacing: 0.8px;
-}
-
-
-/* ----------------------------------------------------------
-   BOTONES
----------------------------------------------------------- */
-
-.secondary-button,
-.export-button,
-.filter-button {
-    font-size: 13px;
-    min-height: 40px;
-}
-
-.today-button {
-    font-size: 12px;
-}
-
-
-/* ----------------------------------------------------------
-   TARJETAS DE RESUMEN
----------------------------------------------------------- */
-
-.summary-card {
-    min-height: 108px;
-}
-
-.summary-information > span {
-    font-size: 13px;
-}
-
-.summary-information strong {
-    font-size: 29px;
-}
-
-.summary-information small {
-    font-size: 12px;
-    color: var(--muted-readable);
-}
-
-
-/* ----------------------------------------------------------
-   TÍTULOS DE PANELES
----------------------------------------------------------- */
-
-.panel-heading h2,
-.upcoming-heading h2,
-.obligations-heading h2 {
-    font-size: 18px;
-    line-height: 1.35;
-}
-
-.period-badge {
-    font-size: 12px;
-}
-
-.obligations-heading p {
-    font-size: 13px;
-}
-
-
-/* ----------------------------------------------------------
-   CONTROLES DEL CALENDARIO
----------------------------------------------------------- */
-
-.month-navigation h3 {
-    font-size: 17px;
-}
-
-.legend-item {
-    font-size: 12px;
-}
-
-.weekday {
-    font-size: 11px;
-}
-
-
-/* ----------------------------------------------------------
-   DÍAS Y EVENTOS DEL CALENDARIO
----------------------------------------------------------- */
-
-.day-cell {
-    min-height: 76px;
-    padding: 8px;
-    gap: 7px;
-}
-
-.day-number {
-    font-size: 14px;
-}
-
-.today-label {
-    font-size: 9px;
-}
-
-.calendar-event {
-    padding: 5px 6px;
-    font-size: 10px;
-    line-height: 1.35;
-}
-
-.calendar-note p {
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-
-/* ----------------------------------------------------------
-   PRÓXIMOS VENCIMIENTOS
----------------------------------------------------------- */
-
-.date-box {
-    width: 44px;
-    min-width: 44px;
-    height: 48px;
-}
-
-.date-box strong {
-    font-size: 19px;
-}
-
-.date-box span {
-    font-size: 11px;
-}
-
-.upcoming-information strong {
-    font-size: 13px;
-}
-
-.upcoming-information span {
-    font-size: 12px;
-}
-
-.upcoming-information small {
-    font-size: 11px;
-    color: var(--muted-readable);
-}
-
-.status {
-    padding: 6px 8px;
-    font-size: 11px;
-}
-
-.view-all-link {
-    font-size: 13px;
-}
-
-
-/* ----------------------------------------------------------
-   BÚSQUEDA Y FILTROS
----------------------------------------------------------- */
-
-.search-box {
-    height: 42px;
-}
-
-.search-box input {
-    font-size: 13px;
-}
-
-.filter-toolbar select {
-    height: 42px;
-    font-size: 12px;
-}
-
-.filter-button {
-    height: 42px;
-}
-
-
-/* ----------------------------------------------------------
-   TABLA DE OBLIGACIONES
----------------------------------------------------------- */
-
-th {
-    height: 46px;
-    padding: 0 14px;
-
-    font-size: 11px;
-    letter-spacing: 0.3px;
-}
-
-td {
-    height: 66px;
-    padding: 10px 14px;
-
-    font-size: 13px;
-}
-
-.obligation-name strong {
-    font-size: 13px;
-}
-
-.obligation-name small {
-    font-size: 11px;
-    color: var(--muted-readable);
-}
-
-.type-label {
-    font-size: 11px;
-    padding: 6px 8px;
-}
-
-.days-remaining,
-.days-completed {
-    font-size: 13px;
-}
-
-
-/* ----------------------------------------------------------
-   PAGINACIÓN Y PIE
----------------------------------------------------------- */
-
-.table-footer > span {
-    font-size: 12px;
-}
-
-.pagination button {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
-}
-
-.content-footer {
-    font-size: 11px;
-}
-
-
-/* ----------------------------------------------------------
-   CONTRASTE DE ESTADOS
----------------------------------------------------------- */
-
-.status-pending {
-    background: #F8EED7;
-    color: #76520C;
-}
-
-.status-progress {
-    background: #E5EDF5;
-    color: #294D6D;
-}
-
-.status-completed {
-    background: #E2F0E8;
-    color: #20583F;
-}
-
-.status-overdue {
-    background: #F8E5E3;
-    color: #963D38;
-}
-
-.official-type {
-    background: #E7EDF4;
-    color: #17324D;
-}
-
-.internal-type {
-    background: #F8EED7;
-    color: #76520C;
-}
-
-
-/* ----------------------------------------------------------
-   ALTURAS REDUCIDAS
-   No disminuir la tipografía para ganar espacio.
-   Permitir desplazamiento vertical del contenido.
----------------------------------------------------------- */
-
-@media (max-height: 800px) {
-
-    .content-wrapper {
-        overflow-y: auto;
-    }
-
-    .day-cell {
-        min-height: 70px;
-    }
-
-    .upcoming-item {
-        padding: 12px 0;
-    }
-}
-
-
-/* ----------------------------------------------------------
-   VENTANAS MÁS ESTRECHAS
----------------------------------------------------------- */
-
-@media (max-width: 1250px) {
-
-    .summary-information > span {
-        font-size: 12px;
-    }
-
-    .summary-information small {
-        font-size: 11px;
-    }
-
-    .calendar-section {
-        grid-template-columns: minmax(0, 1.45fr) minmax(270px, 0.9fr);
-    }
-
-    .calendar-legend {
-        gap: 10px;
-    }
-
-    .legend-item {
-        font-size: 11px;
-    }
-}
-
-
-/* ==========================================================
-   26. COLORES SEMÁNTICOS OFICIALES NOVERIS
-   Aplicación directa a los estados del calendario
-========================================================== */
-
-:root {
-    /* Colores principales de estado */
-    --status-success: #246348;
-    --status-info: #285F7C;
-    --status-warning: #76550C;
-    --status-danger: #913C3C;
-
-    /* Fondos suaves de estado */
-    --status-success-bg: #EAF2ED;
-    --status-info-bg: #EAF1F5;
-    --status-warning-bg: #F7F1E3;
-    --status-danger-bg: #F6EAEA;
-}
-
-
-/* ----------------------------------------------------------
-   LEYENDA DEL CALENDARIO
----------------------------------------------------------- */
-
-.completed-dot {
-    background: var(--status-success);
-}
-
-.overdue-dot {
-    background: var(--status-danger);
-}
-
-
-/* ----------------------------------------------------------
-   EVENTOS DEL CALENDARIO
----------------------------------------------------------- */
-
-.event-completed {
-    background: var(--status-success-bg);
-    color: var(--status-success);
-    border-left: 3px solid var(--status-success);
-}
-
-.event-overdue {
-    background: var(--status-danger-bg);
-    color: var(--status-danger);
-    border-left: 3px solid var(--status-danger);
-}
-
-
-/* ----------------------------------------------------------
-   ESTADOS DE PRÓXIMOS VENCIMIENTOS
----------------------------------------------------------- */
-
-/* Atención / próximo vencimiento */
 .status-pending {
     background: var(--status-warning-bg);
     color: var(--status-warning);
 }
 
-/* Servicio u obligación en proceso */
 .status-progress {
     background: var(--status-info-bg);
     color: var(--status-info);
 }
 
-/* Obligación cumplida o recibida */
 .status-completed {
     background: var(--status-success-bg);
     color: var(--status-success);
 }
 
-/* Obligación vencida que requiere acción */
 .status-overdue {
     background: var(--status-danger-bg);
     color: var(--status-danger);
 }
 
+.view-all-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 
-/* ----------------------------------------------------------
-   INDICADORES DE LA TABLA
----------------------------------------------------------- */
+    margin-top: auto;
+    padding-top: 19px;
+
+    color: var(--calendar-green);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.view-all-link:hover {
+    color: var(--calendar-navy);
+}
+
+
+/* ==========================================================
+   15. PANEL DE OBLIGACIONES
+========================================================== */
+
+.obligations-panel {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.obligations-heading {
+    margin-bottom: 22px;
+}
+
+.obligations-heading p {
+    margin: 7px 0 0;
+
+    color: var(--calendar-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   16. BOTÓN DE EXPORTACIÓN
+========================================================== */
+
+.export-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-height: 43px;
+    padding: 10px 15px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
+
+    background: #FFFFFF;
+    color: var(--calendar-navy);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.export-button:hover {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
+}
+
+.export-button i {
+    font-size: 16px;
+}
+
+
+/* ==========================================================
+   17. BARRA DE FILTROS
+========================================================== */
+
+.filter-toolbar {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    flex: 1 1 220px;
+    min-width: 190px;
+    min-height: 45px;
+    padding: 0 13px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
+
+    background: #FFFFFF;
+}
+
+.search-box i {
+    color: var(--calendar-muted);
+    font-size: 15px;
+}
+
+.search-box input {
+    width: 100%;
+    min-width: 0;
+    height: 43px;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+    color: var(--calendar-text);
+
+    font-size: 13px;
+}
+
+.search-box input::placeholder {
+    color: #829096;
+}
+
+.filter-toolbar select {
+    flex: 0 1 175px;
+
+    min-width: 145px;
+    min-height: 45px;
+    padding: 0 12px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
+
+    background: #FFFFFF;
+    color: var(--calendar-text);
+
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.filter-toolbar .primary-button {
+    min-height: 45px;
+    padding: 10px 16px;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================================
+   18. TABLA DE OBLIGACIONES
+========================================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 8px;
+}
+
+.table-container table {
+    width: 100%;
+    min-width: 790px;
+
+    border-collapse: collapse;
+    border-spacing: 0;
+
+    text-align: left;
+}
+
+.table-container thead {
+    background: #F4F7F8;
+}
+
+.table-container th {
+    padding: 15px 14px;
+
+    border-bottom: 1px solid var(--calendar-border);
+
+    color: var(--calendar-navy);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.table-container td {
+    padding: 16px 14px;
+
+    border-bottom: 1px solid var(--calendar-border);
+
+    color: var(--calendar-text);
+    font-size: 13px;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.table-container tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-container tbody tr {
+    transition: background 0.15s ease;
+}
+
+.table-container tbody tr:hover {
+    background: #F8FAFA;
+}
+
+.obligation-name {
+    color: var(--calendar-navy);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   19. INDICADORES DE TIPO DE OBLIGACIÓN
+========================================================== */
+
+.type-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.table-indicator {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+}
+
+.official-indicator {
+    background: #285F7C;
+}
+
+.internal-indicator {
+    background: var(--calendar-gold);
+}
 
 .completed-indicator {
     background: var(--status-success);
 }
 
-.days-completed {
-    color: var(--status-success);
-    font-weight: 700;
+.official-type {
+    color: var(--status-info);
 }
+
+.internal-type {
+    color: var(--status-warning);
+}
+
+
+/* ==========================================================
+   20. TIEMPOS Y ACCIONES DE TABLA
+========================================================== */
 
 .days-remaining {
     color: var(--status-warning);
+    font-size: 12px;
     font-weight: 700;
 }
 
-
-/* ----------------------------------------------------------
-   CONSISTENCIA DE ESTADOS Y CONTRASTE
----------------------------------------------------------- */
-
-.status,
-.event-completed,
-.event-overdue {
+.days-completed {
+    color: var(--status-success);
+    font-size: 12px;
     font-weight: 700;
 }
 
-.status-pending,
-.status-progress,
-.status-completed,
-.status-overdue {
-    border: 1px solid currentColor;
+.action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 7px;
+
+    background: #FFFFFF;
+    color: var(--calendar-navy);
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.action-button:hover {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
+    color: var(--calendar-green);
+}
+
+.action-button i {
+    font-size: 14px;
 }
 
 
-/* ----------------------------------------------------------
-   IDENTIFICACIÓN VISUAL DE ESTADOS
----------------------------------------------------------- */
+/* ==========================================================
+   21. PIE Y PAGINACIÓN DE TABLA
+========================================================== */
 
-.status-pending::before,
-.status-progress::before,
-.status-completed::before,
-.status-overdue::before {
-    content: "";
-    width: 7px;
-    height: 7px;
-    min-width: 7px;
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
 
-    margin-right: 6px;
+    padding-top: 19px;
+}
 
-    border-radius: 50%;
-    background: currentColor;
+.table-footer > span {
+    color: var(--calendar-muted);
+    font-size: 12px;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pagination button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 34px;
+    height: 34px;
+    padding: 0 8px;
+
+    border: 1px solid var(--calendar-border);
+    border-radius: 6px;
+
+    background: #FFFFFF;
+    color: var(--calendar-text);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.pagination button:hover:not(:disabled) {
+    border-color: var(--calendar-green);
+    background: var(--status-success-bg);
+}
+
+.pagination .pagination-active {
+    border-color: var(--calendar-green);
+
+    background: var(--calendar-green);
+    color: #FFFFFF;
+}
+
+.pagination button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* ==========================================================
+   22. PIE DEL CONTENIDO
+========================================================== */
+
+.content-wrapper > .content-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    padding: 15px 0;
+
+    border-top: 1px solid var(--calendar-border);
+
+    color: var(--calendar-muted);
+    font-size: 12px;
+}
+
+
+/* ==========================================================
+   23. RESPONSIVE: PANTALLAS MEDIANAS
+========================================================== */
+
+@media (max-width: 1200px) {
+
+    .summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calendar-section {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .upcoming-panel {
+        min-height: auto;
+    }
+
+    .upcoming-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 22px;
+    }
+
+    .upcoming-item:nth-child(2) {
+        padding-top: 0;
+    }
+
+}
+
+
+/* ==========================================================
+   24. RESPONSIVE: TABLETAS
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .page-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .page-heading .primary-button {
+        width: fit-content;
+    }
+
+    .calendar-panel,
+    .upcoming-panel,
+    .obligations-panel {
+        padding: 20px;
+    }
+
+    .day-cell {
+        min-height: 83px;
+        padding: 7px 6px;
+    }
+
+    .calendar-event {
+        font-size: 9px;
+    }
+
+}
+
+
+/* ==========================================================
+   25. RESPONSIVE: MÓVILES
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .page-heading h2 {
+        font-size: 25px;
+    }
+
+    .page-heading p {
+        font-size: 14px;
+    }
+
+    .page-heading .primary-button {
+        width: 100%;
+    }
+
+    .summary-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .summary-card {
+        min-height: 105px;
+        padding: 17px;
+    }
+
+    .summary-icon {
+        flex-basis: 46px;
+        width: 46px;
+        height: 46px;
+
+        font-size: 19px;
+    }
+
+    .summary-information strong {
+        font-size: 25px;
+    }
+
+    .calendar-panel,
+    .upcoming-panel,
+    .obligations-panel {
+        padding: 16px;
+    }
+
+    .panel-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .panel-heading h3,
+    .upcoming-heading h3,
+    .obligations-heading h3 {
+        font-size: 17px;
+    }
+
+    .period-badge {
+        font-size: 12px;
+    }
+
+    .calendar-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .month-navigation {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .month-navigation strong {
+        min-width: auto;
+        font-size: 14px;
+    }
+
+    .calendar-legend {
+        gap: 11px;
+    }
+
+    .legend-item {
+        font-size: 11px;
+    }
+
+    .weekday {
+        min-height: 35px;
+        font-size: 10px;
+    }
+
+    .day-cell {
+        min-height: 67px;
+        padding: 5px 3px;
+        gap: 4px;
+    }
+
+    .day-number {
+        min-width: 22px;
+        min-height: 22px;
+        font-size: 11px;
+    }
+
+    .today-label {
+        position: static;
+        font-size: 8px;
+    }
+
+    .calendar-event {
+        padding: 4px 3px;
+        font-size: 8px;
+    }
+
+    .upcoming-list {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .upcoming-item:nth-child(2) {
+        padding-top: 16px;
+    }
+
+    .obligations-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .export-button {
+        width: 100%;
+    }
+
+    .filter-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .search-box,
+    .filter-toolbar select,
+    .filter-toolbar .primary-button {
+        width: 100%;
+        flex: auto;
+    }
+
+    .table-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .content-wrapper > .content-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
+
+
+/* ==========================================================
+   26. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .summary-card,
+    .month-arrow,
+    .today-button,
+    .export-button,
+    .action-button,
+    .pagination button {
+        transition: none;
+    }
+
+    .summary-card:hover {
+        transform: none;
+    }
+
 }
